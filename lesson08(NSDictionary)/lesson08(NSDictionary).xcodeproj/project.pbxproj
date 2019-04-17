@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B2216A122677D4E0090AF40 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2216A022677D4E0090AF40 /* Student.m */; };
 		5B38E1832265E232006B25CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38E1822265E232006B25CA /* AppDelegate.m */; };
 		5B38E1862265E232006B25CA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B38E1852265E232006B25CA /* ViewController.m */; };
 		5B38E1892265E232006B25CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B38E1872265E232006B25CA /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B22169F22677D4E0090AF40 /* Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		5B2216A022677D4E0090AF40 /* Student.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
 		5B38E17E2265E232006B25CA /* lesson08(NSDictionary).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lesson08(NSDictionary).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B38E1812265E232006B25CA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5B38E1822265E232006B25CA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +61,8 @@
 		5B38E1802265E232006B25CA /* lesson08(NSDictionary) */ = {
 			isa = PBXGroup;
 			children = (
+				5B22169F22677D4E0090AF40 /* Student.h */,
+				5B2216A022677D4E0090AF40 /* Student.m */,
 				5B38E1812265E232006B25CA /* AppDelegate.h */,
 				5B38E1822265E232006B25CA /* AppDelegate.m */,
 				5B38E1842265E232006B25CA /* ViewController.h */,
@@ -144,6 +149,7 @@
 				5B38E1862265E232006B25CA /* ViewController.m in Sources */,
 				5B38E1912265E233006B25CA /* main.m in Sources */,
 				5B38E1832265E232006B25CA /* AppDelegate.m in Sources */,
+				5B2216A122677D4E0090AF40 /* Student.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
