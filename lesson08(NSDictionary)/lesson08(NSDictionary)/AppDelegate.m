@@ -25,6 +25,7 @@
 //    2. Создайте 10 - 15 объектов этого класса.
 //    3. Теперь мы создадим дикшинари типо школьный журнал, где ключ будет фамилия + имя, а значение сам студент.
 //    4. Распечатайте дикшинари
+    NSLog(@"~~~~~~~~~~ SchoolBoy ~~~~~~~~~~");
     
     Student *student1 = [[Student alloc] init];
     Student *student2 = [[Student alloc] init];
@@ -68,6 +69,8 @@
 //
 //    4. В цикле пройдемся по всем ключам в дикшинари и распечатаем имя и фамилию каждого студента + его фразу приветствия.
     
+    NSLog(@"~~~~~~~~~~ Student ~~~~~~~~~~");
+    
     for (NSString *key in [journal allKeys]) {
         Student *student = [journal objectForKey:key];
         [student hello];
@@ -78,17 +81,16 @@
 //
 //    5. Чтобы сделать тоже самое но по какому-то порядку, отсортируйте массив ключей по возрастанию и выведите приветствие каждого студента из дикшинари, но уже по отсортированному списку.
     
+    NSLog(@"~~~~~~~~~~ Master ~~~~~~~~~~");
     
+    NSArray *sortedKeys = [[journal allKeys] sortedArrayUsingSelector:@selector(compare:)];
     
-    
-    
-    
-    
-    
-    
-    
-    
+    for (NSString *key in sortedKeys) {
+        Student *student = [journal objectForKey:key];
+        [student hello];
+    }
 
+    
     return YES;
 }
 
