@@ -19,22 +19,54 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+//    Уровень Ученик
+//
+//    1. Создайте класс студент со свойствами имя, фамилия и фраза приветствия.
+//    2. Создайте 10 - 15 объектов этого класса.
+//    3. Теперь мы создадим дикшинари типо школьный журнал, где ключ будет фамилия + имя, а значение сам студент.
+//    4. Распечатайте дикшинари
+    
     Student *student1 = [[Student alloc] init];
+    Student *student2 = [[Student alloc] init];
+    Student *student3 = [[Student alloc] init];
+    Student *student4 = [[Student alloc] init];
+    Student *student5 = [[Student alloc] init];
+    Student *student6 = [[Student alloc] init];
+    Student *student7 = [[Student alloc] init];
+    Student *student8 = [[Student alloc] init];
+    Student *student9 = [[Student alloc] init];
+    Student *student10 = [[Student alloc] init];
+    
+    student1.name = @"Aleksey";     student1.surname = @"Suslov";
+    student2.name = @"Sergey";      student2.surname = @"Voroncov";
+    student3.name = @"Vlodimir";    student3.surname = @"Borisov";
+    student4.name = @"Boris";       student4.surname = @"Kuznecov";
+    student5.name = @"Grigoriy";    student5.surname = @"Voroshilov";
+    student6.name = @"Svetlana";    student6.surname = @"Nemaya";
+    student7.name = @"Nelly";       student7.surname = @"Smith";
+    student8.name = @"Mariya";      student8.surname = @"Viktorovna";
+    student9.name = @"Aleksandr";   student9.surname = @"Sergeevich";
+    student10.name = @"Anatoliy";   student10.surname = @"Anatolievich";
+    
+    NSDictionary *journal = [NSDictionary dictionaryWithObjectsAndKeys:
+                             student1, [student1 fullname],
+                             student2, [student2 fullname],
+                             student3, [student3 fullname],
+                             student4, [student4 fullname],
+                             student5, [student5 fullname],
+                             student6, [student6 fullname],
+                             student7, [student7 fullname],
+                             student8, [student8 fullname],
+                             student9, [student9 fullname],
+                             student10, [student10 fullname],
+                             nil];
+    
+    NSLog(@"%@", journal);
     
     
-    
-    
-    
-    student1.name = @"Aleksey";
-    student1.surname = @"Suslov";
-    
-    NSLog(@"test, print full name %@", [student1 fullname]);
-    [student1 hello];
-    
-    
-    
-    
-    
+//    Уровень Студент.
+//
+//    4. В цикле пройдемся по всем ключам в дикшинари и распечатаем имя и фамилию каждого студента + его фразу приветствия.
     
     
     
@@ -63,17 +95,7 @@
     
     
     /*
-     Уровень Ученик
-     
-     1. Создайте класс студент со свойствами имя, фамилия и фраза приветствия.
-     2. Создайте 10 - 15 объектов этого класса.
-     3. Теперь мы создадим дикшинари типо школьный журнал, где ключ будет фамилия + имя, а значение сам студент.
-     4. Распечатайте дикшинари
-     
-     Уровень Студент.
-     
-     4. В цикле пройдемся по всем ключам в дикшинари и распечатаем имя и фамилию каждого студента + его фразу приветствия.
-     
+
      Уровень Мастер.
      
      5. Чтобы сделать тоже самое но по какому-то порядку, отсортируйте массив ключей по возрастанию и выведите приветствие каждого студента из дикшинари, но уже по отсортированному списку.
