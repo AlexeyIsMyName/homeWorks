@@ -21,7 +21,6 @@
 
 - (instancetype)initWithName:(NSString *)name
                      surname:(NSString *)surname {
-    //self = [super init];
     if (self) {
         _name = name;
         _surname = surname;

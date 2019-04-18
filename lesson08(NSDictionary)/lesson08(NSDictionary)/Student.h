@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (instancetype)initWithName:(NSString *)name
-                     surname:(NSString *)roomNumber;
+                     surname:(NSString *)surname;
 
 
 @end
