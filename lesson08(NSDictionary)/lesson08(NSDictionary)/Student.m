@@ -19,5 +19,15 @@
     NSLog(@"Hello! My full name is %@", [self fullname]);
 }
 
+- (instancetype)initWithName:(NSString *)name
+                     surname:(NSString *)surname {
+    //self = [super init];
+    if (self) {
+        _name = name;
+        _surname = surname;
+    }
+    return self;
+}
 
 @end
+

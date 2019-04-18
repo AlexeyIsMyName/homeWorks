@@ -27,27 +27,16 @@
 //    4. Распечатайте дикшинари
     NSLog(@"~~~~~~~~~~ SchoolBoy ~~~~~~~~~~");
     
-    Student *student1 = [[Student alloc] init];
-    Student *student2 = [[Student alloc] init];
-    Student *student3 = [[Student alloc] init];
-    Student *student4 = [[Student alloc] init];
-    Student *student5 = [[Student alloc] init];
-    Student *student6 = [[Student alloc] init];
-    Student *student7 = [[Student alloc] init];
-    Student *student8 = [[Student alloc] init];
-    Student *student9 = [[Student alloc] init];
-    Student *student10 = [[Student alloc] init];
-    
-    student1.name = @"Aleksey";     student1.surname = @"Suslov";
-    student2.name = @"Sergey";      student2.surname = @"Voroncov";
-    student3.name = @"Vlodimir";    student3.surname = @"Borisov";
-    student4.name = @"Boris";       student4.surname = @"Kuznecov";
-    student5.name = @"Grigoriy";    student5.surname = @"Voroshilov";
-    student6.name = @"Svetlana";    student6.surname = @"Nemaya";
-    student7.name = @"Nelly";       student7.surname = @"Smith";
-    student8.name = @"Mariya";      student8.surname = @"Viktorovna";
-    student9.name = @"Aleksandr";   student9.surname = @"Sergeevich";
-    student10.name = @"Anatoliy";   student10.surname = @"Anatolievich";
+    Student *student1 = [[Student alloc] initWithName:@"Aleksey" surname:@"Suslov"];
+    Student *student2 = [[Student alloc] initWithName:@"Sergey" surname:@"Voroncov"];
+    Student *student3 = [[Student alloc] initWithName:@"Vlodimir" surname:@"Borisov"];
+    Student *student4 = [[Student alloc] initWithName:@"Boris" surname:@"Kuznecov"];
+    Student *student5 = [[Student alloc] initWithName:@"Grigoriy" surname:@"Voroshilov"];
+    Student *student6 = [[Student alloc] initWithName:@"Svetlana" surname:@"Nemaya"];
+    Student *student7 = [[Student alloc] initWithName:@"Nelly" surname:@"Smith"];
+    Student *student8 = [[Student alloc] initWithName:@"Mariya" surname:@"Viktorovna"];
+    Student *student9 = [[Student alloc] initWithName:@"Aleksandr" surname:@"Sergeevich"];
+    Student *student10 = [[Student alloc] initWithName:@"Anatoliy" surname:@"Anatolievich"];
     
     NSDictionary *journal = [NSDictionary dictionaryWithObjectsAndKeys:
                              student1, [student1 fullname],

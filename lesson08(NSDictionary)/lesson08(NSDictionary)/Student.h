@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) hello;
 
 
+- (instancetype)initWithName:(NSString *)name
+                     surname:(NSString *)roomNumber;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
