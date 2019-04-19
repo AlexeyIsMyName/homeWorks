@@ -38,21 +38,18 @@
     Student *student9 = [[Student alloc] initWithName:@"Aleksandr" surname:@"Sergeevich"];
     Student *student10 = [[Student alloc] initWithName:@"Anatoliy" surname:@"Anatolievich"];
     
-    NSDictionary *journal = [NSDictionary dictionaryWithObjectsAndKeys:
-                             student1, [student1 fullname],
-                             student2, [student2 fullname],
-                             student3, [student3 fullname],
-                             student4, [student4 fullname],
-                             student5, [student5 fullname],
-                             student6, [student6 fullname],
-                             student7, [student7 fullname],
-                             student8, [student8 fullname],
-                             student9, [student9 fullname],
-                             student10, [student10 fullname],
-                             nil];
+    NSDictionary *journal = @{[student1 fullname]: student1,
+                              [student2 fullname]: student2,
+                              [student3 fullname]: student3,
+                              [student4 fullname]: student4,
+                              [student5 fullname]: student5,
+                              [student6 fullname]: student6,
+                              [student7 fullname]: student7,
+                              [student8 fullname]: student8,
+                              [student9 fullname]: student9,
+                              [student10 fullname]: student10};
     
     NSLog(@"%@", journal);
-    
     
 //    Уровень Студент.
 //
@@ -64,7 +61,6 @@
         Student *student = [journal objectForKey:key];
         [student hello];
     }
-    
     
 //    Уровень Мастер.
 //
@@ -78,7 +74,6 @@
         Student *student = [journal objectForKey:key];
         [student hello];
     }
-
     
     return YES;
 }

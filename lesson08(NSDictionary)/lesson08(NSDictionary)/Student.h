@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Student : NSObject
 
-
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSString* surname;
 
@@ -20,10 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) hello;
 
-
 - (instancetype)initWithName:(NSString *)name
                      surname:(NSString *)surname;
-
 
 @end
 

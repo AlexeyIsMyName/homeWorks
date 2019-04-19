@@ -10,7 +10,6 @@
 
 @implementation Student
 
-
 - (NSString*) fullname {
     return [NSString stringWithFormat: @"%@ %@", self.name, self.surname];
 }
@@ -21,10 +20,8 @@
 
 - (instancetype)initWithName:(NSString *)name
                      surname:(NSString *)surname {
-    if (self) {
         _name = name;
         _surname = surname;
-    }
     return self;
 }
 
