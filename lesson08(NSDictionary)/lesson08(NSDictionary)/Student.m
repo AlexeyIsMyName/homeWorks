@@ -8,6 +8,14 @@
 
 #import "Student.h"
 
+@interface Student()
+
+@property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic) NSString* surname;
+- (NSString*) fullname;
+
+@end
+
 @implementation Student
 
 - (NSString*) fullname {
