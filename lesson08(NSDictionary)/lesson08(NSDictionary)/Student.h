@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Student : NSObject
 
 - (void) hello;
+- (NSString*) fullname;
 
 - (instancetype)initWithName:(NSString *)name
                      surname:(NSString *)surname;

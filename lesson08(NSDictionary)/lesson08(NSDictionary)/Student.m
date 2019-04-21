@@ -12,7 +12,6 @@
 
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSString* surname;
-- (NSString*) fullname;
 
 @end
 
@@ -28,8 +27,10 @@
 
 - (instancetype)initWithName:(NSString *)name
                      surname:(NSString *)surname {
-        _name = name;
-        _surname = surname;
+    if (self) {
+        self.name = name;
+        self.surname = surname;
+    }
     return self;
 }
 
