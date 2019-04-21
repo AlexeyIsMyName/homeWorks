@@ -34,3 +34,5 @@ lesson09(Delegates)/DelegatesTest/DelegatesTest/Patient.h
 lesson09(Delegates)/DelegatesTest/DelegatesTest/Patient.m
 lesson09(Delegates)/DelegatesTest/DelegatesTest/ViewController.h
 lesson09(Delegates)/DelegatesTest/DelegatesTest/ViewController.m
+lesson09(Delegates)/DelegatesTest/DelegatesTest/Doctor.m
+lesson09(Delegates)/DelegatesTest/DelegatesTest/Doctor.h
