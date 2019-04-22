@@ -13,6 +13,8 @@
 		5BD13AC4226D7510007EC8F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BD13AC3226D7510007EC8F9 /* Assets.xcassets */; };
 		5BD13AC7226D7510007EC8F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD13AC5226D7510007EC8F9 /* LaunchScreen.storyboard */; };
 		5BD13ACA226D7510007EC8F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD13AC9226D7510007EC8F9 /* main.m */; };
+		5BD13AD2226D785C007EC8F9 /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD13AD1226D785C007EC8F9 /* Patient.m */; };
+		5BD13AD5226D786E007EC8F9 /* Doctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD13AD4226D786E007EC8F9 /* Doctor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		5BD13AC6226D7510007EC8F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BD13AC8226D7510007EC8F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BD13AC9226D7510007EC8F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5BD13AD0226D785C007EC8F9 /* Patient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
+		5BD13AD1226D785C007EC8F9 /* Patient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
+		5BD13AD3226D786E007EC8F9 /* Doctor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Doctor.h; sourceTree = "<group>"; };
+		5BD13AD4226D786E007EC8F9 /* Doctor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Doctor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 		5BD13AB9226D750E007EC8F9 /* homework09(Delegates) */ = {
 			isa = PBXGroup;
 			children = (
+				5BD13AD3226D786E007EC8F9 /* Doctor.h */,
+				5BD13AD4226D786E007EC8F9 /* Doctor.m */,
+				5BD13AD0226D785C007EC8F9 /* Patient.h */,
+				5BD13AD1226D785C007EC8F9 /* Patient.m */,
 				5BD13ABA226D750E007EC8F9 /* AppDelegate.h */,
 				5BD13ABB226D750F007EC8F9 /* AppDelegate.m */,
 				5BD13ABD226D750F007EC8F9 /* ViewController.h */,
@@ -142,8 +152,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD13ABF226D750F007EC8F9 /* ViewController.m in Sources */,
+				5BD13AD2226D785C007EC8F9 /* Patient.m in Sources */,
 				5BD13ACA226D7510007EC8F9 /* main.m in Sources */,
 				5BD13ABC226D750F007EC8F9 /* AppDelegate.m in Sources */,
+				5BD13AD5226D786E007EC8F9 /* Doctor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
