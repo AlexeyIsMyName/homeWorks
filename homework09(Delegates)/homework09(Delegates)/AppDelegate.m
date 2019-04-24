@@ -40,7 +40,7 @@
     Patient *patient3 = [[Patient alloc] initWithName:@"Boris" temperature:36.6f symptom: soreThroat];
     Patient *patient4 = [[Patient alloc] initWithName:@"Gosha" temperature:36.6f symptom: stomachAche];
     Patient *patient5 = [[Patient alloc] initWithName:@"Tolik" temperature:36.6f symptom: headAche];
-    Patient *patient6 = [[Patient alloc] initWithName:@"Sveta" temperature:36.6f symptom: temperature];
+    Patient *patient6 = [[Patient alloc] initWithName:@"Sveta" temperature:39.6f symptom: temperature];
     Patient *patient7 = [[Patient alloc] initWithName:@"Dasha" temperature:36.6f symptom: none];
     
     Doctor *doctor = [[Doctor alloc] init];
@@ -111,17 +111,10 @@
     
     NSLog(@" ~~~~~~~~~~ level master  ~~~~~~~~~~ ");
     
+    [doctor showRaport];
+    [doctor cleanRaport];
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     

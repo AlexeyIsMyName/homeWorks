@@ -11,10 +11,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol PatientDelegate;
-
-@interface Patient : NSObject
-
 typedef enum {
     cough,
     runnyNose,
@@ -24,6 +20,20 @@ typedef enum {
     temperature,
     none
 } Symptom;
+
+typedef enum {
+    head,
+    stomach,
+    leg,
+    throat,
+    heart,
+    tooth,
+    nothing
+} Organ;
+
+@protocol PatientDelegate;
+
+@interface Patient : NSObject
 
 @property (strong, nonatomic) NSString *name;
 @property (assign, nonatomic) CGFloat temperature;

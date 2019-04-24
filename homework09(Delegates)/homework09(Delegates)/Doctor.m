@@ -7,8 +7,22 @@
 //
 
 #import "Doctor.h"
+@interface Doctor()
+
+@property (strong, nonatomic) NSMutableDictionary *raport;
+
+@end
+
 
 @implementation Doctor
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.raport = [NSMutableDictionary dictionary];
+    }
+    return self;
+}
 
 - (void)patientCure:(nonnull Patient *)patient {
     
@@ -24,5 +38,15 @@
             break;
     }
 }
+
+- (void) showRaport {
+    
+}
+
+- (void) cleanRaport {
+    
+}
+
+
 
 @end

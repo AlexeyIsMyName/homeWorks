@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Doctor : NSObject <PatientDelegate>
 
+- (void) showRaport;
+- (void) cleanRaport;
+
 @end
 
 NS_ASSUME_NONNULL_END
