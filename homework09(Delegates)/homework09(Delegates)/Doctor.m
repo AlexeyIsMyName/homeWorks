@@ -25,7 +25,6 @@
 }
 
 - (void)patientCure:(nonnull Patient *)patient {
-    
     switch (patient.symptom) {
         case cough: NSLog(@"Doc said: %@ take a cough pill ", patient.name); break;
         case runnyNose: NSLog(@"Doc said: %@ take a drops from the common cold", patient.name); break;
@@ -37,16 +36,26 @@
         default:
             break;
     }
+    
+    switch (patient.organ) {
+        case head: [self.raport setObject:@"Head" forKey:patient.name]; break;
+        case stomach: [self.raport setObject:@"Stomach" forKey:patient.name]; break;
+        case leg: [self.raport setObject:@"Leg" forKey:patient.name]; break;
+        case throat: [self.raport setObject:@"Throat" forKey:patient.name]; break;
+        case heart: [self.raport setObject:@"Heart" forKey:patient.name]; break;
+        case tooth: [self.raport setObject:@"Tooth" forKey:patient.name]; break;
+        case nothing: [self.raport setObject:@"Noting" forKey:patient.name]; break;
+        default:
+            break;
+    }
 }
 
 - (void) showRaport {
-    
+    NSLog(@"%@", self.raport);
 }
 
 - (void) cleanRaport {
-    
+    self.raport = [NSMutableDictionary dictionary];
 }
-
-
 
 @end

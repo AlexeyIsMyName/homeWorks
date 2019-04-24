@@ -38,6 +38,7 @@ typedef enum {
 @property (strong, nonatomic) NSString *name;
 @property (assign, nonatomic) CGFloat temperature;
 @property (assign, nonatomic) Symptom symptom;
+@property (assign, nonatomic) Organ organ;
 
 @property (weak, nonatomic) id <PatientDelegate> delegate;
 
@@ -45,7 +46,8 @@ typedef enum {
 
 - (instancetype)initWithName:(NSString *)name
                  temperature:(CGFloat)temperature
-                     symptom:(Symptom)symptom;
+                     symptom:(Symptom)symptom
+                       organ:(Organ)organ;
 
 @end
 

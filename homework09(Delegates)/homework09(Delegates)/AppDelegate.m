@@ -35,13 +35,13 @@
     
     NSLog(@" ~~~~~~~~~~ level schoolboy  ~~~~~~~~~~ ");
     
-    Patient *patient1 = [[Patient alloc] initWithName:@"Vova" temperature:36.6f symptom: cough];
-    Patient *patient2 = [[Patient alloc] initWithName:@"Aleksey" temperature:36.6f symptom: runnyNose];
-    Patient *patient3 = [[Patient alloc] initWithName:@"Boris" temperature:36.6f symptom: soreThroat];
-    Patient *patient4 = [[Patient alloc] initWithName:@"Gosha" temperature:36.6f symptom: stomachAche];
-    Patient *patient5 = [[Patient alloc] initWithName:@"Tolik" temperature:36.6f symptom: headAche];
-    Patient *patient6 = [[Patient alloc] initWithName:@"Sveta" temperature:39.6f symptom: temperature];
-    Patient *patient7 = [[Patient alloc] initWithName:@"Dasha" temperature:36.6f symptom: none];
+    Patient *patient1 = [[Patient alloc] initWithName:@"Vova" temperature:36.6f symptom: cough organ: head];
+    Patient *patient2 = [[Patient alloc] initWithName:@"Aleksey" temperature:36.6f symptom: runnyNose organ: stomach];
+    Patient *patient3 = [[Patient alloc] initWithName:@"Boris" temperature:36.6f symptom: soreThroat organ: leg];
+    Patient *patient4 = [[Patient alloc] initWithName:@"Gosha" temperature:36.6f symptom: stomachAche organ: throat];
+    Patient *patient5 = [[Patient alloc] initWithName:@"Tolik" temperature:36.6f symptom: headAche organ: heart];
+    Patient *patient6 = [[Patient alloc] initWithName:@"Sveta" temperature:39.6f symptom: temperature organ: tooth];
+    Patient *patient7 = [[Patient alloc] initWithName:@"Dasha" temperature:36.6f symptom: none organ: nothing];
     
     Doctor *doctor = [[Doctor alloc] init];
     
@@ -114,22 +114,20 @@
     [doctor showRaport];
     [doctor cleanRaport];
     
-
-    
-    
-    
-    
-    
     /*
-    
+     
      Супермен
      
      13. Создайте в классе пациента проперти - оценка доктору.
      14. Когда доктор вам назначает лечение некоторые пациенты должны стать недовольны.
      15. В конце дня после того как все лечение будет сделано и доктор напишет рапорт, надо пройтись по пациентам и всем недовольным поменять доктора.
      16. Начать новый день и убедиться что Недовольные пациенты таки поменяли доктора.
-
-    */
+     
+     */
+    
+    
+    
+    
     
     
     return YES;

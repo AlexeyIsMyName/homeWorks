@@ -16,11 +16,13 @@
 
 - (instancetype)initWithName:(NSString *)name
                  temperature:(CGFloat)temperature
-                     symptom:(Symptom)symptom {
+                     symptom:(Symptom)symptom
+                       organ:(Organ)organ {
     if (self) {
         self.name = name;
         self.temperature = temperature;
         self.symptom = symptom;
+        self.organ = organ;
     }
     return self;
 }
