@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B253E5522700EA4000C4326 /* DoctorsFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B253E5422700EA4000C4326 /* DoctorsFriend.m */; };
 		5BD13ABC226D750F007EC8F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD13ABB226D750F007EC8F9 /* AppDelegate.m */; };
 		5BD13ABF226D750F007EC8F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD13ABE226D750F007EC8F9 /* ViewController.m */; };
 		5BD13AC2226D750F007EC8F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD13AC0226D750F007EC8F9 /* Main.storyboard */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B253E5322700EA4000C4326 /* DoctorsFriend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoctorsFriend.h; sourceTree = "<group>"; };
+		5B253E5422700EA4000C4326 /* DoctorsFriend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoctorsFriend.m; sourceTree = "<group>"; };
 		5BD13AB7226D750E007EC8F9 /* homework09(Delegates).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "homework09(Delegates).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD13ABA226D750E007EC8F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5BD13ABB226D750F007EC8F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -64,6 +67,8 @@
 		5BD13AB9226D750E007EC8F9 /* homework09(Delegates) */ = {
 			isa = PBXGroup;
 			children = (
+				5B253E5322700EA4000C4326 /* DoctorsFriend.h */,
+				5B253E5422700EA4000C4326 /* DoctorsFriend.m */,
 				5BD13AD3226D786E007EC8F9 /* Doctor.h */,
 				5BD13AD4226D786E007EC8F9 /* Doctor.m */,
 				5BD13AD0226D785C007EC8F9 /* Patient.h */,
@@ -153,6 +158,7 @@
 			files = (
 				5BD13ABF226D750F007EC8F9 /* ViewController.m in Sources */,
 				5BD13AD2226D785C007EC8F9 /* Patient.m in Sources */,
+				5B253E5522700EA4000C4326 /* DoctorsFriend.m in Sources */,
 				5BD13ACA226D7510007EC8F9 /* main.m in Sources */,
 				5BD13ABC226D750F007EC8F9 /* AppDelegate.m in Sources */,
 				5BD13AD5226D786E007EC8F9 /* Doctor.m in Sources */,
