@@ -14,6 +14,16 @@
     [self.delegate patientCure:self];
 }
 
+- (BOOL) rateTheDoctor {
+    if (self.rateDoc < 3) {
+        NSLog(@"%@ said - This doctor's rate is low! Please change my doctor to another!", self.name);
+        return YES;
+    } else {
+        NSLog(@"%@ said - This doctor's rate is high! Give him a bonus!", self.name);
+        return NO;
+    }
+}
+
 - (instancetype)initWithName:(NSString *)name
                  temperature:(CGFloat)temperature
                      symptom:(Symptom)symptom

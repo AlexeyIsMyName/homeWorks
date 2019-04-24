@@ -11,7 +11,8 @@
 @implementation DoctorsFriend
 
 - (void)patientCure:(nonnull Patient *)patient {
-    NSLog(@"Docs friend said: %@ drink Bitner in any situation ", patient.name);
+    patient.rateDoc = arc4random_uniform(5);
+    NSLog(@"Docs friend said: %@ drink Bitner in any situation", patient.name);
 }
 
 @end

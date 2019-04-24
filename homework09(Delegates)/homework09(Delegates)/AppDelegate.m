@@ -125,11 +125,40 @@
      
      */
     
+    NSLog(@" ~~~~~~~~~~ level superman  ~~~~~~~~~~ ");
     
+    NSLog(@" ~~~~~~~~~~ day 1  ~~~~~~~~~~ ");
     
+    for (Patient *value in patients2) {
+        [value goToDoctor];
+    }
     
+    for (Patient *patient in patients2) {
+        if ([patient rateTheDoctor]) {
+            if (patient.delegate == doctor) {
+                patient.delegate = doctorsFriend;
+            } else {
+                patient.delegate = doctor;
+            }
+        }
+    }
     
+    NSLog(@" ~~~~~~~~~~ day 2  ~~~~~~~~~~ ");
     
+    for (Patient *value in patients2) {
+        [value goToDoctor];
+    }
+    
+    for (Patient *patient in patients2) {
+        if ([patient rateTheDoctor]) {
+            if (patient.delegate == doctor) {
+                patient.delegate = doctorsFriend;
+            } else {
+                patient.delegate = doctor;
+            }
+        }
+    }
+
     return YES;
 }
 
