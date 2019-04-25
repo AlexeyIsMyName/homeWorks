@@ -7,8 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "Government.h"
+#import "Doctor.h"
+#import "Pensioner.h"
+#import "Businessman.h"
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) Government *government;
 
 @end
 
@@ -17,7 +23,42 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+     
+     self.government = [[Government alloc] init];
+     
+     [[NSNotificationCenter defaultCenter] addObserver:self
+     selector:@selector(governmentNotification:)
+     name:GovernmentTaxLevelDidChangeNotification
+     object:nil];
+     
+     Doctor *doctor1 = [[Doctor alloc] init];
+     Doctor *doctor2 = [[Doctor alloc] init];
+     Doctor *doctor3 = [[Doctor alloc] init];
+     Doctor *doctor4 = [[Doctor alloc] init];
+     Doctor *doctor5 = [[Doctor alloc] init];
+     
+     doctor1.salary = doctor2.salary = doctor3.salary = doctor4.salary = doctor5.salary = self.government.salary;
+     
+     self.government.taxLevel = 5.5;
+     self.government.salary = 1100;
+     self.government.averagePrice = 15;
+     self.government.pension = 550;
+     
+     self.government.salary = 1050;
+     self.government.salary = 1150;
+     
+     self.government.salary = 900;
+     
+     /*
+     
+     Ученик.
+     
+     1. Используя мой код создать свой проект со своими классами и понять как оно работает
+     2. Добавить классы "пенсионер" и "бизнесмен"
+     3. Доктор следит за изменением зарплаты, бизнесмен должен следить за изменением налогов, а пенсионер за изменением пенсий.
+     4. Все классы: Доктор, Пенсионер и Бизнесмен долджны следить также и за средней ценой на товар.
+     
+     */
     
     
     
@@ -84,6 +125,15 @@
     return YES;
 }
 
+- (void) governmentNotification:(NSNotification*) notification {
+    
+    //NSLog(@"governmentNotification userInfo = %@", notification.userInfo);
+    
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
