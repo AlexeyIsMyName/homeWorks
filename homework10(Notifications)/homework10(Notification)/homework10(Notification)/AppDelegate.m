@@ -31,33 +31,55 @@
      name:GovernmentTaxLevelDidChangeNotification
      object:nil];
      
-     Doctor *doctor1 = [[Doctor alloc] init];
-     Doctor *doctor2 = [[Doctor alloc] init];
-     Doctor *doctor3 = [[Doctor alloc] init];
-     Doctor *doctor4 = [[Doctor alloc] init];
-     Doctor *doctor5 = [[Doctor alloc] init];
-     
-     doctor1.salary = doctor2.salary = doctor3.salary = doctor4.salary = doctor5.salary = self.government.salary;
-     
-     self.government.taxLevel = 5.5;
-     self.government.salary = 1100;
-     self.government.averagePrice = 15;
-     self.government.pension = 550;
-     
-     self.government.salary = 1050;
-     self.government.salary = 1150;
-     
-     self.government.salary = 900;
-     
      /*
-     
      Ученик.
      
      1. Используя мой код создать свой проект со своими классами и понять как оно работает
      2. Добавить классы "пенсионер" и "бизнесмен"
      3. Доктор следит за изменением зарплаты, бизнесмен должен следить за изменением налогов, а пенсионер за изменением пенсий.
      4. Все классы: Доктор, Пенсионер и Бизнесмен долджны следить также и за средней ценой на товар.
+     */
+    
+    Pensioner *pensioner1 = [[Pensioner alloc] init];
+    Pensioner *pensioner2 = [[Pensioner alloc] init];
+    Pensioner *pensioner3 = [[Pensioner alloc] init];
+    Pensioner *pensioner4 = [[Pensioner alloc] init];
+    Pensioner *pensioner5 = [[Pensioner alloc] init];
+    
+    pensioner1.pension = pensioner2.pension = pensioner3.pension = pensioner4.pension = pensioner5.pension = self.government.pension;
+    
+    Businessman *businessman1 = [[Businessman alloc] init];
+    Businessman *businessman2 = [[Businessman alloc] init];
+    Businessman *businessman3 = [[Businessman alloc] init];
+    Businessman *businessman4 = [[Businessman alloc] init];
+    Businessman *businessman5 = [[Businessman alloc] init];
+    
+    businessman1.taxLevel = businessman2.taxLevel = businessman3.taxLevel = businessman4.taxLevel = businessman5.taxLevel = self.government.taxLevel;
+    
+    Doctor *doctor1 = [[Doctor alloc] init];
+    Doctor *doctor2 = [[Doctor alloc] init];
+    Doctor *doctor3 = [[Doctor alloc] init];
+    Doctor *doctor4 = [[Doctor alloc] init];
+    Doctor *doctor5 = [[Doctor alloc] init];
+    
+    doctor1.salary = doctor2.salary = doctor3.salary = doctor4.salary = doctor5.salary = self.government.salary;
+    
+    self.government.taxLevel = 5.5;
+    self.government.salary = 1100;
+    self.government.averagePrice = 15;
+    self.government.pension = 550;
+    
+    self.government.taxLevel = 5.3;
+    self.government.salary = 1050;
+    self.government.averagePrice = 17;
+    self.government.pension = 530;
+    
+    /*
+     Умничка.
      
+     5. Каждый из классов следит за инфляцией (процентный рост средней цены на товар) и оценивает свой потенциальный доход по отношению к инфляции, например размер пенсии к возможности купить продукты у пенсионера, либо новая прибыль за вычетом налогов у бизнесмена также по отношению к ценам на товар.
+     
+     6. Не секрет что изменение этих характеристик оказывает разное влияние на разные слои населения, поэтому пусть в зависимости от уровня покупательской способности каждый класс выдает свои перлы.
      */
     
     
@@ -73,39 +95,7 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     /*
-    
-     Ученик.
-     
-     1. Используя мой код создать свой проект со своими классами и понять как оно работает
-     2. Добавить классы "пенсионер" и "бизнесмен"
-     3. Доктор следит за изменением зарплаты, бизнесмен должен следить за изменением налогов, а пенсионер за изменением пенсий.
-     4. Все классы: Доктор, Пенсионер и Бизнесмен долджны следить также и за средней ценой на товар.
-     
-     Умничка.
-     
-     5. Каждый из классов следит за инфляцией (процентный рост средней цены на товар) и оценивает свой потенциальный доход по отношению к инфляции, например размер пенсии к возможности купить продукты у пенсионера, либо новая прибыль за вычетом налогов у бизнесмена также по отношению к ценам на товар.
-     
-     6. Не секрет что изменение этих характеристик оказывает разное влияние на разные слои населения, поэтому пусть в зависимости от уровня покупательской способности каждый класс выдает свои перлы.
-     
      Мастер.
      
      7. Подпишите классы на нотификацию ухода приложения в бекграунд, чтобы когда нажимается кнопка HOME и приложение сворачивается, каждый объект заявлял о том что он идет спать
@@ -119,7 +109,6 @@
      10. Добавьте НСЛоги в каждый метод апп делегата и своего класса
      
      11. Сворачивая и разварачивая приложение добивайтесь вызовов определенный методов делегата и тех же нотификаций и посмотрите что вызывается раньше - метод делегата или нотификация :)
-     
     */
     
     return YES;
