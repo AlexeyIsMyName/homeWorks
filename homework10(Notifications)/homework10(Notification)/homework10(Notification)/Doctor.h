@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic) CGFloat salary;
 
+- (void) tellMeAboutQualityOfLife;
+
 @end
 
 NS_ASSUME_NONNULL_END

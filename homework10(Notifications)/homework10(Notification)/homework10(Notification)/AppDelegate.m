@@ -82,8 +82,11 @@
      6. Не секрет что изменение этих характеристик оказывает разное влияние на разные слои населения, поэтому пусть в зависимости от уровня покупательской способности каждый класс выдает свои перлы.
      */
     
-    
-    
+    self.government.averagePrice = 18;
+    self.government.averagePrice = 15;
+    self.government.averagePrice = 14;
+    self.government.averagePrice = 18;
+    self.government.averagePrice = 10;
     
     
     
