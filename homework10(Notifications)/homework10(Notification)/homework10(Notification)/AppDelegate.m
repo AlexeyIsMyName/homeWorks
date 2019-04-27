@@ -88,16 +88,6 @@
     self.government.averagePrice = 18;
     self.government.averagePrice = 10;
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     /*
      Мастер.
      

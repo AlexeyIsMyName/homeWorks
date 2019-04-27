@@ -15,7 +15,6 @@
 @property (strong, nonatomic) NSMutableArray *inflationHistory;
 @property (strong, nonatomic) NSMutableArray *consumerAbilityHistory;
 
-
 @end
 
 @implementation Doctor
@@ -96,9 +95,7 @@
         NSInteger indexLastValueConsumerAbilityHistory = [self.consumerAbilityHistory count] - 1;
         NSInteger currentValueConsumerAbility = [[self.consumerAbilityHistory objectAtIndex: indexLastValueConsumerAbilityHistory] integerValue];
         NSInteger lastValueConsumerAbility = [[self.consumerAbilityHistory objectAtIndex: indexLastValueConsumerAbilityHistory - 1] integerValue];
-        
-        //NSLog(@"%ld, %ld, %ld, %ld", lastValueInflation, currentValueInflation, lastValueConsumerAbility, currentValueConsumerAbility);
-        
+      
         if (currentValueInflation < lastValueInflation && currentValueConsumerAbility > lastValueConsumerAbility) {
             NSLog(@"Doctor think what life is BETTER than was in the past!");
         } else {
