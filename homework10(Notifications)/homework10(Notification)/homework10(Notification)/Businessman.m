@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) NSMutableArray *averagePriceHistory;
 @property (strong, nonatomic) NSMutableArray *inflationHistory;
-@property (strong, nonatomic) NSMutableArray *consumerAbilityHistory;
+@property (strong, nonatomic) NSMutableArray *indexClearProfitHistory;
 
 @end
 
@@ -26,7 +26,7 @@
         
         self.averagePriceHistory = [[NSMutableArray alloc] init];
         self.inflationHistory = [[NSMutableArray alloc] init];
-        self.consumerAbilityHistory = [[NSMutableArray alloc] init];
+        self.indexClearProfitHistory = [[NSMutableArray alloc] init];
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self
@@ -74,10 +74,12 @@
         CGFloat lastAveragePrice = [[self.averagePriceHistory objectAtIndex: indexLastValueAveragePriceHistory] floatValue];
         
         NSInteger currentInflation = averagePrice / lastAveragePrice * 100 - 100;
-        NSInteger currentConcumerAbility = self.taxLevel / averagePrice;
+        
+        CGFloat indexClearProfit = averagePrice / 100 * self.taxLevel;
+        NSLog(@"%f", indexClearProfit);
         
         [self.inflationHistory addObject:[NSNumber numberWithInteger:currentInflation]];
-        [self.consumerAbilityHistory addObject:[NSNumber numberWithInteger:currentConcumerAbility]];
+        [self.indexClearProfitHistory addObject:[NSNumber numberWithInteger:indexClearProfit]];
     }
     [self.averagePriceHistory addObject:[NSNumber numberWithFloat:averagePrice]];
     
@@ -85,20 +87,20 @@
 }
 
 - (void) tellMeAboutQualityOfLife {
-    if ([self.inflationHistory count] > 1 && [self.consumerAbilityHistory count] > 1) {
+    if ([self.inflationHistory count] > 1 && [self.indexClearProfitHistory count] > 1) {
         
         NSInteger indexLastValueInflationHistory = [self.inflationHistory count] - 1;
         NSInteger currentValueInflation = [[self.inflationHistory objectAtIndex: indexLastValueInflationHistory] integerValue];
         NSInteger lastValueInflation = [[self.inflationHistory objectAtIndex: indexLastValueInflationHistory - 1] integerValue];
+        //indexClearProfit
+        NSInteger indexLastValueIndexClearProfitHistory = [self.indexClearProfitHistory count] - 1;
+        NSInteger currentValueIndexClearProfit = [[self.indexClearProfitHistory objectAtIndex: indexLastValueIndexClearProfitHistory] integerValue];
+        NSInteger lastValueIndexClearProfit = [[self.indexClearProfitHistory objectAtIndex: indexLastValueIndexClearProfitHistory - 1] integerValue];
         
-        NSInteger indexLastValueConsumerAbilityHistory = [self.consumerAbilityHistory count] - 1;
-        NSInteger currentValueConsumerAbility = [[self.consumerAbilityHistory objectAtIndex: indexLastValueConsumerAbilityHistory] integerValue];
-        NSInteger lastValueConsumerAbility = [[self.consumerAbilityHistory objectAtIndex: indexLastValueConsumerAbilityHistory - 1] integerValue];
-        
-        if (currentValueInflation < lastValueInflation && currentValueConsumerAbility > lastValueConsumerAbility) {
-            NSLog(@"Businessman think what life is BETTER than was in the past!");
+        if (currentValueInflation < lastValueInflation && currentValueIndexClearProfit < lastValueIndexClearProfit) {
+            NSLog(@"Businessman tells what inflation is less and clear profit is better than there was early, it is good!");
         } else {
-            NSLog(@"Businessman think what life is WORSE than was in the past!");
+            NSLog(@"Businessman tells what inflation is more and clear profit is less than there was early, it is terrible!");
         }
     }
 }
