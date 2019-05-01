@@ -17,6 +17,7 @@
 		5B6D9A2C22715D7A0077F029 /* Doctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D9A2B22715D7A0077F029 /* Doctor.m */; };
 		5B6D9A2F22715DBF0077F029 /* Pensioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D9A2E22715DBF0077F029 /* Pensioner.m */; };
 		5B6D9A3222715DF20077F029 /* Businessman.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D9A3122715DF20077F029 /* Businessman.m */; };
+		5BEED142227998D300C3670C /* MyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEED141227998D300C3670C /* MyAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		5B6D9A2E22715DBF0077F029 /* Pensioner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pensioner.m; sourceTree = "<group>"; };
 		5B6D9A3022715DF20077F029 /* Businessman.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Businessman.h; sourceTree = "<group>"; };
 		5B6D9A3122715DF20077F029 /* Businessman.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Businessman.m; sourceTree = "<group>"; };
+		5BEED140227998D300C3670C /* MyAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAppDelegate.h; sourceTree = "<group>"; };
+		5BEED141227998D300C3670C /* MyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				5B6D9A2B22715D7A0077F029 /* Doctor.m */,
 				5B6D9A2722715D5A0077F029 /* Government.h */,
 				5B6D9A2822715D5A0077F029 /* Government.m */,
+				5BEED140227998D300C3670C /* MyAppDelegate.h */,
+				5BEED141227998D300C3670C /* MyAppDelegate.m */,
 				5B6D9A1122715C7A0077F029 /* AppDelegate.h */,
 				5B6D9A1222715C7A0077F029 /* AppDelegate.m */,
 				5B6D9A1422715C7A0077F029 /* ViewController.h */,
@@ -165,6 +170,7 @@
 				5B6D9A2F22715DBF0077F029 /* Pensioner.m in Sources */,
 				5B6D9A1622715C7A0077F029 /* ViewController.m in Sources */,
 				5B6D9A2122715C7B0077F029 /* main.m in Sources */,
+				5BEED142227998D300C3670C /* MyAppDelegate.m in Sources */,
 				5B6D9A1322715C7A0077F029 /* AppDelegate.m in Sources */,
 				5B6D9A2C22715D7A0077F029 /* Doctor.m in Sources */,
 				5B6D9A3222715DF20077F029 /* Businessman.m in Sources */,

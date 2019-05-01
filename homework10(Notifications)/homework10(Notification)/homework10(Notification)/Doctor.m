@@ -39,8 +39,25 @@
                    name:GovernmentAveragePriceDidChangeNotification
                  object:nil];
         
+        [nc addObserver:self
+               selector:@selector(didEnterBackgroundNotification)
+                   name:UIApplicationDidEnterBackgroundNotification
+                 object:nil];
+        
+        [nc addObserver:self
+               selector:@selector(willEnterForegroundNotification)
+                   name:UIApplicationWillEnterForegroundNotification
+                 object:nil];
     }
     return self;
+}
+
+- (void) didEnterBackgroundNotification {
+    NSLog(@"%@ go sleep", self.class);
+}
+
+- (void) willEnterForegroundNotification {
+    NSLog(@"%@ weak up", self.class);
 }
 
 -(void) dealloc {
