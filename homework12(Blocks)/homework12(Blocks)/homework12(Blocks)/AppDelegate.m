@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 #import "Student.h"
+#import "Patient.h"
 
 typedef void (^TestBlockWithoutParams)(void);
-
 typedef void (^TestBlockWithInOneStringParams)(NSString*);
 
 @interface AppDelegate ()
@@ -30,6 +30,7 @@ typedef void (^TestBlockWithInOneStringParams)(NSString*);
      3! Если вы не определили тип данных для ваших блоков, то сделайте это сейчас и используйте их
      4! Создайте метод который принимает блок и вызывает его и вызовите этот метод.
     */
+    NSLog(@"~~~~~ Schoolboy's level ~~~~~");
     
     TestBlockWithoutParams testBlock = ^{
         NSLog(@"test block");
@@ -53,6 +54,7 @@ typedef void (^TestBlockWithInOneStringParams)(NSString*);
      7! Поместите всех в массив.
      8! Используя соответствующий метод сортировки массива (с блоком) отсортируйте массив студентов сначала по фамилии, а если они одинаковы то по имени.
     */
+    NSLog(@"~~~~~ Student's level ~~~~~");
     
     Student *student1 = [[Student alloc] initWithName:@"Boris" sName:@"Britva"];
     Student *student2 = [[Student alloc] initWithName:@"Vlodimir" sName:@"Dolgorukiy"];
@@ -94,19 +96,72 @@ typedef void (^TestBlockWithInOneStringParams)(NSString*);
     
     /*
      Мастер.
-     9. Задание из видео. Из урока о делегатах. У пациентов удалите протокол делегат и соответствующее проперти.
-     10. Добавьте метод принимающий блок когда им станет плохо.
-     11. Блок должен передавать указатель на самого студента ну и на те параметры, которые были в задании по делегатам.
-     12. Теперь когда пациентам поплохеет, они должны вызывать блок, а в блоке нужно принимать решения что делать (доктор не нужен делайте все в апп делегате)
+     9! Задание из видео. Из урока о делегатах. У пациентов удалите протокол делегат и соответствующее проперти.
+     10! Добавьте метод принимающий блок когда им станет плохо.
+     11! Блок должен передавать указатель на самого студента ну и на те параметры, которые были в задании по делегатам.
+     12! Теперь когда пациентам поплохеет, они должны вызывать блок, а в блоке нужно принимать решения что делать (доктор не нужен делайте все в апп делегате)
     */
+    NSLog(@"~~~~~ Master's level ~~~~~");
     
+    Patient *patient1 = [[Patient alloc] initWithName:@"Boris" sName:@"Britva"];
+    Patient *patient2 = [[Patient alloc] initWithName:@"Vlodimir" sName:@"Dolgorukiy"];
+    Patient *patient3 = [[Patient alloc] initWithName:@"Nikolay" sName:@"Petrovich"];
+    Patient *patient4 = [[Patient alloc] initWithName:@"Aleksey" sName:@"Neproley"];
+    Patient *patient5 = [[Patient alloc] initWithName:@"Dmitry" sName:@"Nezloy"];
+    Patient *patient6 = [[Patient alloc] initWithName:@"Konstantin" sName:@"Habenskiy"];
+    Patient *patient7 = [[Patient alloc] initWithName:@"Petr" sName:@"Petrovich"];
+    Patient *patient8 = [[Patient alloc] initWithName:@"Aleksandr" sName:@"Nosov"];
+    Patient *patient9 = [[Patient alloc] initWithName:@"Pavel" sName:@"Kuznecov"];
+    Patient *patient10 = [[Patient alloc] initWithName:@"Kirill" sName:@"Fedorov"];
     
+    NSArray *patients = [NSArray arrayWithObjects:
+                         patient1,
+                         patient2,
+                         patient3,
+                         patient4,
+                         patient5,
+                         patient6,
+                         patient7,
+                         patient8,
+                         patient9,
+                         patient10,
+                         nil];
+    
+    for (Patient *patient in patients) {
+        if (patient.feeling) {
+            [patient feelingIll:^(Patient * patient) {
+                switch (patient.organ) {
+                    case Head:
+                        NSLog(@"My head hurts");
+                        [patient takePill];
+                        break;
+                    case Throat:
+                        NSLog(@"My throat hurts");
+                        [patient takeThroatDrops];
+                        break;
+                    case Heart:
+                        NSLog(@"My heart hurts");
+                        [patient makeShot];
+                        break;
+                    case Stomach:
+                        NSLog(@"My stomach hurts");
+                        [patient eatHealthFood];
+                        break;
+                    default: break;
+                }
+            }];
+        } else {
+            NSLog(@"%@ %@, I am fine!", patient.name, patient.sName);
+        }
+    }
     
     /*
      Супермен
      13. Познайте истинное предназначение блоков :) Пусть пациентам становится плохо не тогда когда вы их вызываете в цикле(это убрать), а через случайное время 5-15 секунд после создания (используйте специальный метод из урока по селекторам в ините пациента).
      14. не забудьте массив пациентов сделать проперти аппделегата, а то все помрут по выходе из функции так и не дождавшись :)
     */
+    
+    NSLog(@"~~~~~ Superman's level ~~~~~");
     
     
     

@@ -14,6 +14,7 @@
 		5BEED1A6227E0CE400C3670C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BEED1A4227E0CE400C3670C /* LaunchScreen.storyboard */; };
 		5BEED1A9227E0CE400C3670C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEED1A8227E0CE400C3670C /* main.m */; };
 		5BEED1B1227E122A00C3670C /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEED1B0227E122A00C3670C /* Student.m */; };
+		5BEED1B4227E217300C3670C /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEED1B3227E217300C3670C /* Patient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		5BEED1A8227E0CE400C3670C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5BEED1AF227E122A00C3670C /* Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
 		5BEED1B0227E122A00C3670C /* Student.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		5BEED1B2227E217300C3670C /* Patient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
+		5BEED1B3227E217300C3670C /* Patient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 		5BEED198227E0CE300C3670C /* homework12(Blocks) */ = {
 			isa = PBXGroup;
 			children = (
+				5BEED1B2227E217300C3670C /* Patient.h */,
+				5BEED1B3227E217300C3670C /* Patient.m */,
 				5BEED1AF227E122A00C3670C /* Student.h */,
 				5BEED1B0227E122A00C3670C /* Student.m */,
 				5BEED199227E0CE300C3670C /* AppDelegate.h */,
@@ -148,6 +153,7 @@
 			files = (
 				5BEED19E227E0CE300C3670C /* ViewController.m in Sources */,
 				5BEED1A9227E0CE400C3670C /* main.m in Sources */,
+				5BEED1B4227E217300C3670C /* Patient.m in Sources */,
 				5BEED19B227E0CE300C3670C /* AppDelegate.m in Sources */,
 				5BEED1B1227E122A00C3670C /* Student.m in Sources */,
 			);
