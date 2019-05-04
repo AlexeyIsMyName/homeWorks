@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Student.h"
 
 typedef void (^TestBlockWithoutParams)(void);
 
@@ -47,19 +48,49 @@ typedef void (^TestBlockWithInOneStringParams)(NSString*);
     
     /*
      Студент.
-     5. Создайте класс студент с проперти имя и фамилия.
-     6. Создайте в аппделегате 10 разных студентов, пусть у парочки будут одинаковые фамилии.
-     7. Поместите всех в массив.
-     8. Используя соответствующий метод сортировки массива (с блоком) отсортируйте массив студентов сначала по фамилии, а если они одинаковы то по имени.
+     5! Создайте класс студент с проперти имя и фамилия.
+     6! Создайте в аппделегате 10 разных студентов, пусть у парочки будут одинаковые фамилии.
+     7! Поместите всех в массив.
+     8! Используя соответствующий метод сортировки массива (с блоком) отсортируйте массив студентов сначала по фамилии, а если они одинаковы то по имени.
     */
     
+    Student *student1 = [[Student alloc] initWithName:@"Boris" sName:@"Britva"];
+    Student *student2 = [[Student alloc] initWithName:@"Vlodimir" sName:@"Dolgorukiy"];
+    Student *student3 = [[Student alloc] initWithName:@"Nikolay" sName:@"Petrovich"];
+    Student *student4 = [[Student alloc] initWithName:@"Aleksey" sName:@"Neproley"];
+    Student *student5 = [[Student alloc] initWithName:@"Dmitry" sName:@"Nezloy"];
+    Student *student6 = [[Student alloc] initWithName:@"Konstantin" sName:@"Habenskiy"];
+    Student *student7 = [[Student alloc] initWithName:@"Petr" sName:@"Petrovich"];
+    Student *student8 = [[Student alloc] initWithName:@"Aleksandr" sName:@"Nosov"];
+    Student *student9 = [[Student alloc] initWithName:@"Pavel" sName:@"Kuznecov"];
+    Student *student10 = [[Student alloc] initWithName:@"Kirill" sName:@"Fedorov"];
     
+    NSArray *students = [NSArray arrayWithObjects:
+                         student1,
+                         student2,
+                         student3,
+                         student4,
+                         student5,
+                         student6,
+                         student7,
+                         student8,
+                         student9,
+                         student10,
+                         nil];
     
+    NSComparisonResult (^ComparatorSortStudentsBySNameAndName)(Student *obj1, Student *obj2) = ^(Student *obj1, Student *obj2){
+        if (obj1.sName == obj2.sName) {
+            return [obj1.name compare:obj2.name];
+        } else {
+            return [obj1.sName compare:obj2.sName];
+        }
+    };
     
+    NSArray *sortedStudents = [students sortedArrayUsingComparator:ComparatorSortStudentsBySNameAndName];
     
-    
-    
-    
+    for (Student *student in sortedStudents) {
+        NSLog(@"%@ %@", student.name, student.sName);
+    }
     
     /*
      Мастер.
@@ -67,11 +98,17 @@ typedef void (^TestBlockWithInOneStringParams)(NSString*);
      10. Добавьте метод принимающий блок когда им станет плохо.
      11. Блок должен передавать указатель на самого студента ну и на те параметры, которые были в задании по делегатам.
      12. Теперь когда пациентам поплохеет, они должны вызывать блок, а в блоке нужно принимать решения что делать (доктор не нужен делайте все в апп делегате)
-     
+    */
+    
+    
+    
+    /*
      Супермен
      13. Познайте истинное предназначение блоков :) Пусть пациентам становится плохо не тогда когда вы их вызываете в цикле(это убрать), а через случайное время 5-15 секунд после создания (используйте специальный метод из урока по селекторам в ините пациента).
      14. не забудьте массив пациентов сделать проперти аппделегата, а то все помрут по выходе из функции так и не дождавшись :)
     */
+    
+    
     
     return YES;
 }
