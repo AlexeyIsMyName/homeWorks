@@ -11,9 +11,12 @@
 #import "Patient.h"
 
 typedef void (^TestBlockWithoutParams)(void);
-typedef void (^TestBlockWithInOneStringParams)(NSString*);
+typedef void (^TestBlockWithInOneStringParams)(NSString *);
+typedef void (^PatientBlock)(Patient *);
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) NSArray *patientsArray;
 
 @end
 
@@ -157,14 +160,48 @@ typedef void (^TestBlockWithInOneStringParams)(NSString*);
     
     /*
      Супермен
-     13. Познайте истинное предназначение блоков :) Пусть пациентам становится плохо не тогда когда вы их вызываете в цикле(это убрать), а через случайное время 5-15 секунд после создания (используйте специальный метод из урока по селекторам в ините пациента).
-     14. не забудьте массив пациентов сделать проперти аппделегата, а то все помрут по выходе из функции так и не дождавшись :)
+     13! Познайте истинное предназначение блоков :) Пусть пациентам становится плохо не тогда когда вы их вызываете в цикле(это убрать), а через случайное время 5-15 секунд после создания (используйте специальный метод из урока по селекторам в ините пациента).
+     14! не забудьте массив пациентов сделать проперти аппделегата, а то все помрут по выходе из функции так и не дождавшись :)
     */
     
     NSLog(@"~~~~~ Superman's level ~~~~~");
     
+    PatientBlock patientBlockForInit = ^(Patient *patient) {
+        switch (patient.organ) {
+            case Head:
+                NSLog(@"My head hurts");
+                [patient takePill];
+                break;
+            case Throat:
+                NSLog(@"My throat hurts");
+                [patient takeThroatDrops];
+                break;
+            case Heart:
+                NSLog(@"My heart hurts");
+                [patient makeShot];
+                break;
+            case Stomach:
+                NSLog(@"My stomach hurts");
+                [patient eatHealthFood];
+                break;
+            default: break;
+        }
+    };
     
+    Patient *patient11 = [[Patient alloc] initWithBlock:patientBlockForInit name:@"Kirill" sName:@"Fedorov"];
+    Patient *patient12 = [[Patient alloc] initWithBlock:patientBlockForInit name:@"Kirill" sName:@"Fedorov"];
+    Patient *patient13 = [[Patient alloc] initWithBlock:patientBlockForInit name:@"Kirill" sName:@"Fedorov"];
+    Patient *patient14 = [[Patient alloc] initWithBlock:patientBlockForInit name:@"Kirill" sName:@"Fedorov"];
+    Patient *patient15 = [[Patient alloc] initWithBlock:patientBlockForInit name:@"Kirill" sName:@"Fedorov"];
     
+    self.patientsArray = [NSArray arrayWithObjects:
+                          patient11,
+                          patient12,
+                          patient13,
+                          patient14,
+                          patient15,
+                          nil];
+
     return YES;
 }
 

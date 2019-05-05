@@ -25,6 +25,7 @@ typedef enum {
 @property (assign, nonatomic) BOOL feeling;
 
 - (instancetype)initWithName:(NSString *) name sName:(NSString *) sName;
+- (instancetype)initWithBlock:(void(^)(Patient *patient)) block name:(NSString *) name sName:(NSString *) sName;
 
 - (void) takePill;
 - (void) makeShot;
