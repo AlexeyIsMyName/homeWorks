@@ -55,7 +55,7 @@
     static dispatch_queue_t queue;
     static dispatch_once_t task;
     dispatch_once(&task, ^{
-        queue = dispatch_queue_create("com.suslov.testthreads.queue", DISPATCH_QUEUE_CONCURRENT);
+        queue = dispatch_queue_create("suslov.testThreads.queue", DISPATCH_QUEUE_CONCURRENT);
     });
     return queue;
 }
