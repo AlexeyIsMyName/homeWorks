@@ -62,13 +62,25 @@
      5. Создайте новый массив на основе массива из пункта 4, но слова в предложении пусть идут наоборот, первое слово будет в конце, а последнее вначале :)
     */
     
-    NSLog(@"~~~~~~~~~~ Student's level ~~~~~~~~~~");
+    NSLog(@"~~~~~~~~~~ Master's level ~~~~~~~~~~");
     
+    NSMutableArray *arrayWithInversionWordInLine = [[NSMutableArray alloc] init];
+    
+    for (NSString *string in arrayLinesWithNSString) {
+        NSArray *bufferArrayWithWords = [string componentsSeparatedByString:@" "];
+        NSArray *bufferArrayWithReversedWords = [[bufferArrayWithWords reverseObjectEnumerator] allObjects];
+        NSString *bufferString = [bufferArrayWithReversedWords componentsJoinedByString:@" "];
+        [arrayWithInversionWordInLine addObject:bufferString];
+    }
+    
+    NSLog(@"%@", arrayWithInversionWordInLine);
     
     /*
      Супермен.
      6.В оригинальном тексте каждое слово должно начинаться с маленькой буквы, а заканчиваться на заглавную.
     */
+    
+    
     
     
     
