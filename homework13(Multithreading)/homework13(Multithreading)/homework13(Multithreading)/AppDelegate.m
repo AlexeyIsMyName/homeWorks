@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Student.h"
+#import "NewStudent.h"
 
 @interface AppDelegate ()
 
@@ -32,10 +33,10 @@
     NSLog(@"~~~~~~~~~~ Schoolboy's level ~~~~~~~~~~");
     
     Student *student1 = [[Student alloc] initWithName:@"Student1"];
-    Student *student2 = [[Student alloc] initWithName:@"Student1"];
-    Student *student3 = [[Student alloc] initWithName:@"Student1"];
-    Student *student4 = [[Student alloc] initWithName:@"Student1"];
-    Student *student5 = [[Student alloc] initWithName:@"Student1"];
+    Student *student2 = [[Student alloc] initWithName:@"Student2"];
+    Student *student3 = [[Student alloc] initWithName:@"Student3"];
+    Student *student4 = [[Student alloc] initWithName:@"Student4"];
+    Student *student5 = [[Student alloc] initWithName:@"Student5"];
     
     NSArray *students = [[NSArray alloc] initWithObjects:
                          student1,
@@ -81,7 +82,29 @@
      14. Все сделавшие Мастера и Супермена и с красивым кодом получают отдельный огромный РЕСПЕКТ, так как они это на самом деле заслуживают.
     */
     
+    NSLog(@"~~~~~~~~~~ Superman's level ~~~~~~~~~~");
     
+    NewStudent *newStudent1 = [[NewStudent alloc] initWithName:@"NStudent1"];
+    NewStudent *newStudent2 = [[NewStudent alloc] initWithName:@"NStudent2"];
+    NewStudent *newStudent3 = [[NewStudent alloc] initWithName:@"NStudent3"];
+    NewStudent *newStudent4 = [[NewStudent alloc] initWithName:@"NStudent4"];
+    NewStudent *newStudent5 = [[NewStudent alloc] initWithName:@"NStudent5"];
+    
+    NSArray *newStudents = [[NSArray alloc] initWithObjects:
+                         newStudent1,
+                         newStudent2,
+                         newStudent3,
+                         newStudent4,
+                         newStudent5,
+                         nil];
+    
+    for (NewStudent *student in newStudents) {
+        [student guessAnswer:arc4random() % 100 range:NSMakeRange(0, 100)];
+    }
+    
+    for (NewStudent *student in newStudents) {
+        [student guessAnswer:arc4random() % 100 range:NSMakeRange(0, 100) andResultBlock:resultBlock];
+    }
     
     return YES;
 }

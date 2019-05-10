@@ -14,6 +14,7 @@
 		5BFFCBFD2281A72200D1E0AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFFCBFB2281A72200D1E0AA /* LaunchScreen.storyboard */; };
 		5BFFCC002281A72200D1E0AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFFCBFF2281A72200D1E0AA /* main.m */; };
 		5BFFCC08228212FE00D1E0AA /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFFCC07228212FE00D1E0AA /* Student.m */; };
+		5BFFCC0B2285908C00D1E0AA /* NewStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFFCC0A2285908C00D1E0AA /* NewStudent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		5BFFCBFF2281A72200D1E0AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5BFFCC06228212FE00D1E0AA /* Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
 		5BFFCC07228212FE00D1E0AA /* Student.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		5BFFCC092285908C00D1E0AA /* NewStudent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewStudent.h; sourceTree = "<group>"; };
+		5BFFCC0A2285908C00D1E0AA /* NewStudent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewStudent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 		5BFFCBEF2281A72100D1E0AA /* homework13(Multithreading) */ = {
 			isa = PBXGroup;
 			children = (
+				5BFFCC092285908C00D1E0AA /* NewStudent.h */,
+				5BFFCC0A2285908C00D1E0AA /* NewStudent.m */,
 				5BFFCC06228212FE00D1E0AA /* Student.h */,
 				5BFFCC07228212FE00D1E0AA /* Student.m */,
 				5BFFCBF02281A72100D1E0AA /* AppDelegate.h */,
@@ -150,6 +155,7 @@
 				5BFFCC002281A72200D1E0AA /* main.m in Sources */,
 				5BFFCBF22281A72100D1E0AA /* AppDelegate.m in Sources */,
 				5BFFCC08228212FE00D1E0AA /* Student.m in Sources */,
+				5BFFCC0B2285908C00D1E0AA /* NewStudent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
