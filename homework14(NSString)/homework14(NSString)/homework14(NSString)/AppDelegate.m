@@ -80,9 +80,20 @@
      6.В оригинальном тексте каждое слово должно начинаться с маленькой буквы, а заканчиваться на заглавную.
     */
     
+    NSLog(@"~~~~~~~~~~ Superman's level ~~~~~~~~~~");
     
+    NSMutableString *newText = [[NSMutableString alloc] initWithString:[text lowercaseString]];
+    NSCharacterSet *set = [NSCharacterSet lowercaseLetterCharacterSet];
     
+    for (int i = 0; i <= [newText length] - 1; i++) {
+        char tempChar = [newText characterAtIndex:i];
+        if (![set characterIsMember:tempChar]) {
+            NSString *newString = [[NSString stringWithFormat:@"%c", [newText characterAtIndex:i - 1]] uppercaseString];
+            [newText replaceCharactersInRange:NSMakeRange(i - 1, 1) withString:newString];
+        }
+    }
     
+    NSLog(@"%@", newText);
     
     return YES;
 }
