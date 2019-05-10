@@ -29,6 +29,8 @@
      6! Создайте 5 студентов и дайте им одну и туже задачу и посмотрите кто справился с ней лучше
     */
     
+    NSLog(@"~~~~~~~~~~ Schoolboy's level ~~~~~~~~~~");
+    
     Student *student1 = [[Student alloc] initWithName:@"Student1"];
     Student *student2 = [[Student alloc] initWithName:@"Student1"];
     Student *student3 = [[Student alloc] initWithName:@"Student1"];
@@ -43,15 +45,9 @@
                          student5,
                          nil];
     
-    double startTime = CACurrentMediaTime();
-    
     for (Student *student in students) {
         [student guessAnswer:arc4random() % 100 range:NSMakeRange(0, 100)];
     }
-    
-    double totalTime = CACurrentMediaTime() - startTime;
-    
-    NSLog(@"totalTime - %f", totalTime);
 
     /*
      Студент.
@@ -60,23 +56,32 @@
      9. Блок должен быть вызван на главном потоке
     */
     
+    NSLog(@"~~~~~~~~~~ Stubent's level ~~~~~~~~~~");
+    
+    void (^resultBlock)(NSInteger, NSString *, NSInteger, double) = ^(NSInteger answer, NSString *name, NSInteger tryCount, double totalTime) {
+        NSLog(@"You number is %ld, %@ guessed your number with %ld tries and %f seconds", answer, name, tryCount, totalTime);
+    };
+    
+    for (Student *student in students) {
+        [student guessAnswer:arc4random() % 100 range:NSMakeRange(0, 100) andResultBlock:resultBlock];
+    }
+    
+    /*
+     Мастер.
+     10. Создать приватный метод класса (да да, приватный метод да еще и с плюсом), который будет возвращать статическую (то есть одну на все объекты класса студент) dispatch_queue_t, которая инициализируется при первом обращении к этому методу.
+     11. Лучше в этом методе реализовать блок dispatch_once, ищите в инете как и зачем :) А что, программист всегда что-то ищет и хороший программист всегда находит.
+     12. Все студенты должны выполнять свои процессы в этой queue и она должна быть CONCURRENT, типа все блоки одновременно выполняются
+    */
     
     
     
     /*
-     
-     Мастер.
-     
-     10. Создать приватный метод класса (да да, приватный метод да еще и с плюсом), который будет возвращать статическую (то есть одну на все объекты класса студент) dispatch_queue_t, которая инициализируется при первом обращении к этому методу.
-     11. Лучше в этом методе реализовать блок dispatch_once, ищите в инете как и зачем :) А что, программист всегда что-то ищет и хороший программист всегда находит.
-     12. Все студенты должны выполнять свои процессы в этой queue и она должна быть CONCURRENT, типа все блоки одновременно выполняются
-     
      Супермен.
-     
      13. Добавьте еще один класс студента, который делает все тоже самое что вы реализовали до этого, только вместо GCD он использует NSOperation и NSOperationQueue. Вообще вынос мозга в самостоятельной работе :)
      14. Все сделавшие Мастера и Супермена и с красивым кодом получают отдельный огромный РЕСПЕКТ, так как они это на самом деле заслуживают.
-    
     */
+    
+    
     
     return YES;
 }

@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) guessAnswer:(NSInteger) number range:(NSRange) range;
 
+- (void) guessAnswer:(NSInteger) number range:(NSRange) range andResultBlock:(void(^)(NSInteger, NSString *, NSInteger, double)) resultBlock;
+
 - (instancetype)initWithName: (NSString *) name;
 
 @end

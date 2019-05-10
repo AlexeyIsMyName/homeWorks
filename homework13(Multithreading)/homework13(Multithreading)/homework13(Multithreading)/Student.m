@@ -20,7 +20,6 @@
 }
 
 - (void) guessAnswer:(NSInteger) number range:(NSRange) range {
-    
     dispatch_async([Student studentQueue], ^{
         double startTime = CACurrentMediaTime();
         NSInteger answer = 0;
@@ -33,6 +32,22 @@
         
         double totalTime = CACurrentMediaTime() - startTime;
         NSLog(@"You number is %ld, %@ guessed your number with %ld tries and %f seconds", answer, self.name, tryCount, totalTime);
+    });
+}
+
+- (void) guessAnswer:(NSInteger) number range:(NSRange) range andResultBlock:(void(^)(NSInteger, NSString *, NSInteger, double)) resultBlock {
+    dispatch_async([Student studentQueue], ^{
+        double startTime = CACurrentMediaTime();
+        NSInteger answer = 0;
+        NSInteger tryCount = 0;
+        
+        do {
+            answer = arc4random() % range.length;
+            tryCount += 1;
+        } while (answer != number);
+        
+        double totalTime = CACurrentMediaTime() - startTime;
+        resultBlock(number, self.name, tryCount, totalTime);
     });
 }
 
