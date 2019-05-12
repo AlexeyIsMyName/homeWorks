@@ -34,8 +34,6 @@
         [students addObject:student];
     }
     
-    //NSLog(@"%@", students);
-    
     /*
      Студент
      4! В новом цикле пройдитесь по студентам и разделите их уже на два массива - технари и гуманитарии.
@@ -58,22 +56,35 @@
         }
     }
     
-    NSLog(@"%@", studentsWhoWantToKnowTech);
-    NSLog(@"%@", studentsWhoWantToKnowOther);
-    NSLog(@"%ld", (long)countWhoStudyingDevelopment);
+    NSLog(@"Count of students who want to study Development equal to %ld", (long)countWhoStudyingDevelopment);
     
     /*
-     
      Мастер.
-     
-     6. Если студенты выбрали биологию, то отмените ее у них и выведите сообщение в лог, предмет отменен
-     7. Тут придется разобраться как сбросить бит, включите логику :)
-     
+     6! Если студенты выбрали биологию, то отмените ее у них и выведите сообщение в лог, предмет отменен
+     7! Тут придется разобраться как сбросить бит, включите логику :)
+    */
+    NSInteger count = 0;
+    
+    for (int i = 0; i < [students count]; i++) {
+        Student *student = [students objectAtIndex:i];
+        if (student.subjectType & StudentSubjectTypeBiology) {
+            student.subjectType = student.subjectType ^ StudentSubjectTypeBiology;
+            [students replaceObjectAtIndex:i withObject:student];
+            count++;
+        }
+    }
+    
+    if (count > 0) {
+        NSLog(@"Biology canceled");
+    }
+    
+    /*
      Супермен.
      8. Сгенерируйте случайный интежер в диапазоне от 0 до максимума.
      9. Используя цикл и битовые операыии (и возможно NSMutableString) выведите это число на экран в двоичном виде
-    
     */
+    
+    
     
     return YES;
 }
