@@ -25,6 +25,7 @@
      2! В цикле создайте 10 студентов и добавьте их в массив. Используйте мутабл массив
      3! У каждого рандомно установите предметы
     */
+    NSLog(@"~~~~~~~~~~ Schoolboy level ~~~~~~~~~~");
     
     NSMutableArray *students = [[NSMutableArray alloc] init];
     
@@ -39,6 +40,7 @@
      4! В новом цикле пройдитесь по студентам и разделите их уже на два массива - технари и гуманитарии.
      5! Также посчитайте количество тех кто учит программирование
     */
+    NSLog(@"~~~~~~~~~~ Student level ~~~~~~~~~~");
     
     NSMutableArray *studentsWhoWantToKnowTech = [[NSMutableArray alloc] init];
     NSMutableArray *studentsWhoWantToKnowOther = [[NSMutableArray alloc] init];
@@ -63,6 +65,9 @@
      6! Если студенты выбрали биологию, то отмените ее у них и выведите сообщение в лог, предмет отменен
      7! Тут придется разобраться как сбросить бит, включите логику :)
     */
+    
+    NSLog(@"~~~~~~~~~~ Master level ~~~~~~~~~~");
+    
     NSInteger count = 0;
     
     for (int i = 0; i < [students count]; i++) {
@@ -81,10 +86,20 @@
     /*
      Супермен.
      8. Сгенерируйте случайный интежер в диапазоне от 0 до максимума.
-     9. Используя цикл и битовые операыии (и возможно NSMutableString) выведите это число на экран в двоичном виде
+     9. Используя цикл и битовые операции (и возможно NSMutableString) выведите это число на экран в двоичном виде
     */
     
+    NSLog(@"~~~~~~~~~~ Superman level ~~~~~~~~~~");
     
+    NSInteger randomNumber = arc4random() % ((void)(0) , NSIntegerMax);
+    NSLog(@"%ld", (long)randomNumber);
+    NSMutableString *biteWiseNumber = [[NSMutableString alloc] init];
+    
+    for (int i = 31; i >= 0; i--) {
+        [biteWiseNumber appendString: randomNumber & (1 << i) ? @"1" : @"0"];
+    }
+    
+    NSLog(@"%@", biteWiseNumber);
     
     return YES;
 }
