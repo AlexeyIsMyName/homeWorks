@@ -28,24 +28,39 @@
     
     NSMutableArray *students = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 1000; i++) {
         Student *student = [[Student alloc] init];
         student.subjectType = arc4random() % 128;
         [students addObject:student];
     }
     
-    NSLog(@"%@", students);
+    //NSLog(@"%@", students);
     
     /*
      Студент
-     4. В новом цикле пройдитесь по студентам и разделите их уже на два массива - технари и гуманитарии.
-     5. Также посчитайте количество тех кто учит программирование
+     4! В новом цикле пройдитесь по студентам и разделите их уже на два массива - технари и гуманитарии.
+     5! Также посчитайте количество тех кто учит программирование
     */
     
+    NSMutableArray *studentsWhoWantToKnowTech = [[NSMutableArray alloc] init];
+    NSMutableArray *studentsWhoWantToKnowOther = [[NSMutableArray alloc] init];
+    NSUInteger countWhoStudyingDevelopment = 0;
     
+    for (Student *student in students) {
+        if (student.subjectType == 14) {
+            [studentsWhoWantToKnowTech addObject:student];
+        }
+        if (student.subjectType == 113) {
+            [studentsWhoWantToKnowOther addObject:student];
+        }
+        if (student.subjectType & StudentSubjectTypeDevelopment) {
+            countWhoStudyingDevelopment++;
+        }
+    }
     
-    
-    
+    NSLog(@"%@", studentsWhoWantToKnowTech);
+    NSLog(@"%@", studentsWhoWantToKnowOther);
+    NSLog(@"%ld", (long)countWhoStudyingDevelopment);
     
     /*
      

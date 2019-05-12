@@ -17,7 +17,7 @@ typedef enum {
     StudentSubjectTypeDevelopment   = 1 << 2,
     StudentSubjectTypeEngineering   = 1 << 3,
     StudentSubjectTypeArt           = 1 << 4,
-    StudentSubjectTypePhecology     = 1 << 5,
+    StudentSubjectTypePsychology    = 1 << 5,
     StudentSubjectTypeAnatomy       = 1 << 6
     
 } StudentSubjectType;

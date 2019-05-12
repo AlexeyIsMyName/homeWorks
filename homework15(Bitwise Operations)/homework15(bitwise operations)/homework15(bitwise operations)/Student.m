@@ -21,14 +21,14 @@
             "Development = %@\n"
             "Engineering = %@\n"
             "Art = %@\n"
-            "Phecology = %@\n"
+            "Psychology = %@\n"
             "Anatomy = %@\n",
             [self answerByType:StudentSubjectTypeBiology],
             [self answerByType:StudentSubjectTypeMath],
             [self answerByType:StudentSubjectTypeDevelopment],
             [self answerByType:StudentSubjectTypeEngineering],
             [self answerByType:StudentSubjectTypeArt],
-            [self answerByType:StudentSubjectTypePhecology],
+            [self answerByType:StudentSubjectTypePsychology],
             [self answerByType:StudentSubjectTypeAnatomy]];
 }
 
