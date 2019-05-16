@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Student.h"
 
 @interface AppDelegate ()
 
@@ -20,14 +21,38 @@
     
     /*
      Ученик.
-     1. Создайте класс студент у когторого будет проперти dateOfBirth (дата рождения), которая собственно NSDate.
-     2. Инициализируйте NSMutableArray и в цикле создайте 30 студентов.
-     3. Каждому установите дату рождения. Возраст рандомный от 16 до 50 лет.
-     4. В другом цикле пройдитесь по всему массиву и выведите день рождения каждого студента в адекватном формате.
+     1! Создайте класс студент у когторого будет проперти dateOfBirth (дата рождения), которая собственно NSDate.
+     2! Инициализируйте NSMutableArray и в цикле создайте 30 студентов.
+     3! Каждому установите дату рождения. Возраст рандомный от 16 до 50 лет.
+     4! В другом цикле пройдитесь по всему массиву и выведите день рождения каждого студента в адекватном формате.
     */
     
     NSLog(@"~~~~~~~~~~ Schoolboy level ~~~~~~~~~~");
     
+    NSMutableArray *students = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < 30; i++) {
+        
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:
+                                        NSCalendarUnitYear |
+                                        NSCalendarUnitMonth |
+                                        NSCalendarUnitDay
+                                                        fromDate:[NSDate date]];
+        
+        components.year = (NSInteger)[components year] - (arc4random() % 34 + 16);
+        components.month = (arc4random() % 12 + 1);
+        components.day = (arc4random() % 28 + 1);
+        
+        NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:components];
+        Student * student = [[Student alloc] initWithDateOfBirth:date];
+        [students addObject:student];
+    }
+    
+    for (Student *student in students)  {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd/MM/YYYY"];
+        NSLog(@"%@", [dateFormatter stringFromDate:student.dateOfBirth]);
+    }
     
     /*
      Студент.

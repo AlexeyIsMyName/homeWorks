@@ -13,6 +13,7 @@
 		5BFFCCD5228DCBAF00D1E0AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFFCCD4228DCBAF00D1E0AA /* Assets.xcassets */; };
 		5BFFCCD8228DCBAF00D1E0AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFFCCD6228DCBAF00D1E0AA /* LaunchScreen.storyboard */; };
 		5BFFCCDB228DCBAF00D1E0AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFFCCDA228DCBAF00D1E0AA /* main.m */; };
+		5BFFCCE3228DCD0400D1E0AA /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFFCCE2228DCD0400D1E0AA /* Student.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		5BFFCCD7228DCBAF00D1E0AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BFFCCD9228DCBAF00D1E0AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BFFCCDA228DCBAF00D1E0AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5BFFCCE1228DCD0400D1E0AA /* Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		5BFFCCE2228DCD0400D1E0AA /* Student.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 		5BFFCCCA228DCBAD00D1E0AA /* homework16(NSDate) */ = {
 			isa = PBXGroup;
 			children = (
+				5BFFCCE1228DCD0400D1E0AA /* Student.h */,
+				5BFFCCE2228DCD0400D1E0AA /* Student.m */,
 				5BFFCCCB228DCBAD00D1E0AA /* AppDelegate.h */,
 				5BFFCCCC228DCBAD00D1E0AA /* AppDelegate.m */,
 				5BFFCCCE228DCBAD00D1E0AA /* ViewController.h */,
@@ -144,6 +149,7 @@
 				5BFFCCD0228DCBAD00D1E0AA /* ViewController.m in Sources */,
 				5BFFCCDB228DCBAF00D1E0AA /* main.m in Sources */,
 				5BFFCCCD228DCBAD00D1E0AA /* AppDelegate.m in Sources */,
+				5BFFCCE3228DCD0400D1E0AA /* Student.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
