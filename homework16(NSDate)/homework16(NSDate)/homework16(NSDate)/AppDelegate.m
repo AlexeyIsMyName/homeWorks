@@ -11,6 +11,9 @@
 
 @interface AppDelegate ()
 
+@property (strong, nonatomic) NSDate *dateOfTimer;
+@property (strong, nonatomic) NSArray *sortedStudents;
+
 @end
 
 @implementation AppDelegate
@@ -81,13 +84,29 @@
     
     /*
      Мастер.
-     10. Создайте таймер в апп делегате, который отсчитывает один день за пол секунды.
-     11. Когда таймер доходит до дня рождения любого их студентов - поздравлять его с днем рождения.
-     12. Выведите на экран разницу в возрасте между самым молодым и самым старым студентом (количество лет, месяцев, недель и дней)
+     10! Создайте таймер в апп делегате, который отсчитывает один день за пол секунды.
+     11! Когда таймер доходит до дня рождения любого их студентов - поздравлять его с днем рождения.
+     12! Выведите на экран разницу в возрасте между самым молодым и самым старым студентом (количество лет, месяцев, недель и дней)
     */
     
     NSLog(@"~~~~~~~~~~ Master level ~~~~~~~~~~");
     
+    self.sortedStudents = sortedStudents;
+    self.dateOfTimer = [NSDate dateWithTimeIntervalSinceReferenceDate:-86400];
+    [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerMethod:) userInfo:nil repeats:YES];
+    
+    Student *youngestStudent = [sortedStudents firstObject];
+    Student *oldestStudent = [sortedStudents lastObject];
+    
+    NSDateComponents *ageDifference = [[NSCalendar currentCalendar] components:
+                                    NSCalendarUnitDay |
+                                    NSCalendarUnitMonth |
+                                    NSCalendarUnitYear
+                                               fromDate:oldestStudent.dateOfBirth
+                                                 toDate:youngestStudent.dateOfBirth
+                                                options:0];
+    
+    NSLog(@"Difference age: year - %ld, month - %ld, days - %ld", (long)ageDifference.year, ageDifference.month, ageDifference.day);
     
     /*
      Супермен.
@@ -99,7 +118,31 @@
     NSLog(@"~~~~~~~~~~ Superman level ~~~~~~~~~~");
     
     
+    
     return YES;
+}
+
+- (void) timerMethod:(NSTimer *) timer {
+    self.dateOfTimer = [NSDate dateWithTimeInterval:86400 sinceDate:self.dateOfTimer];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+    
+    //NSLog(@"%@", [dateFormatter stringFromDate:self.dateOfTimer]);
+    
+    NSDateComponents *currentDateComponents = [[NSCalendar currentCalendar] components: NSCalendarUnitMonth | NSCalendarUnitDay                                                                                                            fromDate:self.dateOfTimer];
+    
+    for (Student *student in self.sortedStudents) {
+        
+        NSDateComponents *studentDateComponents = [[NSCalendar currentCalendar] components: NSCalendarUnitMonth | NSCalendarUnitDay                                                                                                     fromDate:student.dateOfBirth];
+        
+        if ([currentDateComponents isEqual:studentDateComponents]) {
+            NSLog(@"Heppy Birthday! %@ %@", student.firstName, student.secondName);
+        }
+    }
+    
+    if (currentDateComponents.day == 31 & currentDateComponents.month == 12) {
+        [timer invalidate];
+    }
 }
 
 
