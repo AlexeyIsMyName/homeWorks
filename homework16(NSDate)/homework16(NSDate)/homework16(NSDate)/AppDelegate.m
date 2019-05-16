@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSDate *dateOfTimer;
 @property (strong, nonatomic) NSArray *sortedStudents;
+@property (assign, nonatomic) NSInteger countWorkingDays;
 
 @end
 
@@ -93,7 +94,7 @@
     
     self.sortedStudents = sortedStudents;
     self.dateOfTimer = [NSDate dateWithTimeIntervalSinceReferenceDate:-86400];
-    [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerMethod:) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerMethod1:) userInfo:nil repeats:YES];
     
     Student *youngestStudent = [sortedStudents firstObject];
     Student *oldestStudent = [sortedStudents lastObject];
@@ -110,19 +111,23 @@
     
     /*
      Супермен.
-     13. Выведите на экран день недели, для каждого первого дня каждого месяца в текущем году (от начала до конца)
-     14. Выведите дату (число и месяц) для каждого воскресенья в текущем году (от начала до конца)
-     15. Выведите количество рабочих дней для каждого месяца в текущем году (от начала до конца)
+     13! Выведите на экран день недели, для каждого первого дня каждого месяца в текущем году (от начала до конца)
+     14! Выведите дату (число и месяц) для каждого воскресенья в текущем году (от начала до конца)
+     15! Выведите количество рабочих дней для каждого месяца в текущем году (от начала до конца)
     */
     
     NSLog(@"~~~~~~~~~~ Superman level ~~~~~~~~~~");
     
-    
+    self.countWorkingDays = 0;
+    self.dateOfTimer = [NSDate dateWithTimeIntervalSinceReferenceDate:-86400];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerMethod2:) userInfo:nil repeats:YES];
+    [timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:8]];
     
     return YES;
 }
 
-- (void) timerMethod:(NSTimer *) timer {
+#pragma mark -- timerMethod1 for working Master level --
+- (void) timerMethod1:(NSTimer *) timer {
     self.dateOfTimer = [NSDate dateWithTimeInterval:86400 sinceDate:self.dateOfTimer];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd/MM/yyyy"];
@@ -141,6 +146,37 @@
     }
     
     if (currentDateComponents.day == 31 & currentDateComponents.month == 12) {
+        [timer invalidate];
+    }
+}
+
+#pragma mark -- timerMethod2 for working Superman level--
+- (void) timerMethod2:(NSTimer *) timer {
+    self.dateOfTimer = [NSDate dateWithTimeInterval:86400 sinceDate:self.dateOfTimer];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+    
+    NSDateComponents *currentDateComponents = [[NSCalendar currentCalendar] components:
+                                               NSCalendarUnitMonth |
+                                               NSCalendarUnitDay |
+                                               NSCalendarUnitWeekday                                                                         fromDate:self.dateOfTimer];
+    
+    if (currentDateComponents.day == 1) {
+        [dateFormatter setDateFormat:@"EEEE"];
+        NSLog(@"%@ - Today is first day of Month", [dateFormatter stringFromDate:self.dateOfTimer]);
+    }
+    
+    if (currentDateComponents.weekday == 1) {
+        [dateFormatter setDateFormat:@"dd/MM"];
+        NSLog(@"%@ - Today is Sunday", [dateFormatter stringFromDate:self.dateOfTimer]);
+    }
+    
+    if (currentDateComponents.weekday != 1 && currentDateComponents.weekday != 6) {
+        self.countWorkingDays++;
+    }
+    
+    if (currentDateComponents.day == 31 & currentDateComponents.month == 12) {
+        NSLog(@"%ld working days in current year", self.countWorkingDays);
         [timer invalidate];
     }
 }
