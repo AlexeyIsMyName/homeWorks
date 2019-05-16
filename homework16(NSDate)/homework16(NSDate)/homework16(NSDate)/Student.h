@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Student : NSObject
 
+@property (strong, nonatomic) NSString *firstName;
+@property (strong, nonatomic) NSString *secondName;
 @property (strong, nonatomic) NSDate *dateOfBirth;
 
 - (instancetype)initWithDateOfBirth:(NSDate *)dateOfBirth;

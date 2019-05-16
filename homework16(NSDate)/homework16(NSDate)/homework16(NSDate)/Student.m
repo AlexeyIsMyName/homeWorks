@@ -11,13 +11,19 @@
 @implementation Student
 
 
-- (instancetype)initWithDateOfBirth: (NSDate *) dateOfBirth
+- (instancetype) initWithDateOfBirth: (NSDate *) dateOfBirth
 {
     self = [super init];
     if (self) {
         self.dateOfBirth = dateOfBirth;
     }
     return self;
+}
+
+- (NSString *) description {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/YYYY"];
+    return [NSString stringWithFormat:@"%@ %@, %@", self.firstName, self.secondName, [dateFormatter stringFromDate:self.dateOfBirth]];
 }
 
 @end

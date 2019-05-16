@@ -56,13 +56,28 @@
     
     /*
      Студент.
-     5. Отсортируйте массив студентов по дате рождения, начиная от самого юного.
-     6. Используя массивы имен и фамилий (по 5-10 имен и фамилий), каждому студенту установите случайное имя и случайную фамилию.
-     7. Выведите отсортированных студентов: Имя, Фамилия, год рождения
+     5! Отсортируйте массив студентов по дате рождения, начиная от самого юного.
+     6! Используя массивы имен и фамилий (по 5-10 имен и фамилий), каждому студенту установите случайное имя и случайную фамилию.
+     7! Выведите отсортированных студентов: Имя, Фамилия, год рождения
     */
     
     NSLog(@"~~~~~~~~~~ Student level ~~~~~~~~~~");
     
+    NSArray *sortedStudents = [students sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [[obj2 dateOfBirth] compare:[obj1 dateOfBirth]];
+    }];
+    
+    NSArray *firstNamesArray = [NSArray arrayWithObjects:@"Alex", @"Vova", @"Serg", @"Kola", @"Neo", nil];
+    NSArray *secondNamesArray = [NSArray arrayWithObjects:@"Green", @"Yellow", @"Black", @"White", @"Red", nil];
+    
+    for (Student *student in sortedStudents) {
+        student.firstName = [firstNamesArray objectAtIndex:arc4random() % [firstNamesArray count]];
+        student.secondName = [secondNamesArray objectAtIndex:arc4random() % [secondNamesArray count]];
+    }
+    
+    for (Student *student in sortedStudents) {
+        NSLog(@"%@", student);
+    }
     
     /*
      Мастер.
