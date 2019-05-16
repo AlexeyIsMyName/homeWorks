@@ -67,8 +67,8 @@
     
     NSLog(@"~~~~~~~~~~ Student level ~~~~~~~~~~");
     
-    NSArray *sortedStudents = [students sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        return [[obj2 dateOfBirth] compare:[obj1 dateOfBirth]];
+    NSArray *sortedStudents = [students sortedArrayUsingComparator:^NSComparisonResult(Student *student1, Student *student2) {
+        return [student2.dateOfBirth compare:student1.dateOfBirth];
     }];
     
     NSArray *firstNamesArray = [NSArray arrayWithObjects:@"Alex", @"Vova", @"Serg", @"Kola", @"Neo", nil];
