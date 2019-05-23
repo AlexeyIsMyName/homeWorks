@@ -11,7 +11,7 @@
 @interface ViewController ()
 
 @property (assign, nonatomic) CGPoint middlePoint;
-@property (assign, nonatomic) NSInteger sizeCell;
+@property (assign, nonatomic) double sizeCell;
 
 - (CGPoint) makeFirstPoint;
 - (CGRect) makeMainRect;
@@ -56,6 +56,46 @@
         }
         y = y + self.sizeCell;
         x = (indexY % 2 == 0) ? 0 : self.sizeCell;
+    }
+    
+    
+    CGPoint origin = CGPointZero;
+    
+    origin = CGPointMake(mainView.frame.origin.x, mainView.frame.origin.y);
+    
+    NSLog(@"%@", NSStringFromCGPoint(origin));
+    
+    double ratioFigureByCell = 0.6;
+    double different = (self.sizeCell - self.sizeCell * ratioFigureByCell) / 2;
+    self.sizeCell = self.sizeCell * ratioFigureByCell;
+    origin.x = origin.x + different;
+    origin.y = origin.y + different;
+    
+    NSLog(@"%ld", (long)self.sizeCell);
+    
+    CGRect figureRect = CGRectMake(origin.x, origin.y, self.sizeCell, self.sizeCell);
+    UIView *figureView = [[UIView alloc] initWithFrame:figureRect];
+    figureView.backgroundColor = [UIColor redColor];
+    
+    figureView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+    [self.view addSubview:figureView];
+    
+    
+    x = self.sizeCell - 30;
+    y = 0;
+    cellRect = CGRectZero;
+    
+    for (int indexX = 1; indexX < 9; indexX++) {
+        for (int indexY = 1; indexY < 9; indexY++) {
+            if ((((indexX % 2) != (indexY % 2)) && indexX < 3) ||
+                (((indexX % 2) != (indexY % 2)) && indexX > 6)) {
+                
+                
+                
+            }
+        }
     }
 }
 
