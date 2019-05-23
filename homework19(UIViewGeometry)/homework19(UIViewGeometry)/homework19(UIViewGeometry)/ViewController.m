@@ -12,6 +12,8 @@
 
 @property (assign, nonatomic) CGPoint middlePoint;
 @property (assign, nonatomic) double sizeCell;
+@property (assign, nonatomic) double sizeFigure;
+
 
 - (CGPoint) makeFirstPoint;
 - (CGRect) makeMainRect;
@@ -58,44 +60,44 @@
         x = (indexY % 2 == 0) ? 0 : self.sizeCell;
     }
     
+    /*
+     Супермен
+     8! Поставьте белые и красные шашки (квадратные вьюхи) так как они стоят на доске. Они должны быть сабвьюхами главной вьюхи (у них и у клеток один супервью)
+     9. После каждого переворота шашки должны быть перетасованы используя соответствующие методы иерархии UIView
+     */
     
-    CGPoint origin = CGPointZero;
+    double ratioFigureByCell = 0.6; // ready
+    double different = (self.sizeCell - self.sizeCell * ratioFigureByCell) / 2; // ready
+    self.sizeFigure = self.sizeCell * ratioFigureByCell; // ready - readonly
+    self.sizeFigure = self.sizeCell * ratioFigureByCell - 2;
     
-    origin = CGPointMake(mainView.frame.origin.x, mainView.frame.origin.y);
-    
-    NSLog(@"%@", NSStringFromCGPoint(origin));
-    
-    double ratioFigureByCell = 0.6;
-    double different = (self.sizeCell - self.sizeCell * ratioFigureByCell) / 2;
-    self.sizeCell = self.sizeCell * ratioFigureByCell;
-    origin.x = origin.x + different;
-    origin.y = origin.y + different;
-    
-    NSLog(@"%ld", (long)self.sizeCell);
-    
-    CGRect figureRect = CGRectMake(origin.x, origin.y, self.sizeCell, self.sizeCell);
-    UIView *figureView = [[UIView alloc] initWithFrame:figureRect];
-    figureView.backgroundColor = [UIColor redColor];
-    
-    figureView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin |
-    UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
-    
-    [self.view addSubview:figureView];
-    
-    
-    x = self.sizeCell - 30;
+    x = self.sizeCell;
     y = 0;
-    cellRect = CGRectZero;
+    CGRect figureRect = CGRectZero;
     
     for (int indexX = 1; indexX < 9; indexX++) {
         for (int indexY = 1; indexY < 9; indexY++) {
-            if ((((indexX % 2) != (indexY % 2)) && indexX < 3) ||
-                (((indexX % 2) != (indexY % 2)) && indexX > 6)) {
-                
-                
-                
+            
+            figureRect = CGRectMake(x + different, y + different, self.sizeFigure, self.sizeFigure);
+            UIView *figureView = [[UIView alloc] initWithFrame:figureRect];
+            figureView.backgroundColor = [UIColor redColor];
+            
+            figureView.autoresizingMask =   UIViewAutoresizingFlexibleTopMargin |
+                                            UIViewAutoresizingFlexibleLeftMargin |
+                                            UIViewAutoresizingFlexibleBottomMargin |
+                                            UIViewAutoresizingFlexibleRightMargin;
+            
+            if (((indexX % 2) != (indexY % 2)) && indexX < 3) {
+                [mainView addSubview:figureView];
+                x = x + (self.sizeCell * 2);
+            } else if (((indexX % 2) != (indexY % 2)) && indexX > 6) {
+                [mainView addSubview:figureView];
+                x = x + (self.sizeCell * 2);
             }
+    
         }
+        y = y + self.sizeCell;
+        x = (indexX % 2 != 0) ? 0 : self.sizeCell;
     }
 }
 
@@ -123,7 +125,9 @@
         mainView.backgroundColor = color;
         
         for (UIView *cellView in mainView.subviews) {
-            cellView.backgroundColor = [UIColor brownColor];
+            if (cellView.frame.size.width == self.sizeCell) {
+                cellView.backgroundColor = [UIColor brownColor];
+            }
         }
     }
     
@@ -132,14 +136,16 @@
         mainView.backgroundColor = [UIColor whiteColor];
         
         for (UIView *cellView in mainView.subviews) {
-            cellView.backgroundColor = [UIColor blackColor];
+            if (cellView.frame.size.width == self.sizeCell) {
+                cellView.backgroundColor = [UIColor blackColor];
+            }
         }
     }
 }
 
 /*
  Супермен
- 8. Поставьте белые и красные шашки (квадратные вьюхи) так как они стоят на доске. Они должны быть сабвьюхами главной вьюхи (у них и у клеток один супервью)
+ 8! Поставьте белые и красные шашки (квадратные вьюхи) так как они стоят на доске. Они должны быть сабвьюхами главной вьюхи (у них и у клеток один супервью)
  9. После каждого переворота шашки должны быть перетасованы используя соответствующие методы иерархии UIView
 */
 
