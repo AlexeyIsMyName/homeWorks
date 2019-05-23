@@ -99,7 +99,6 @@
                 x = x + (self.sizeCell * 2);
                 [self.figuresArray addObject:figureView];
             }
-    
         }
         y = y + self.sizeCell;
         x = (indexX % 2 != 0) ? 0 : self.sizeCell;
@@ -117,6 +116,7 @@
 */
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
     UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     
@@ -153,6 +153,19 @@
         UIView *firstFigure = [self.figuresArray objectAtIndex:arc4random() % [self.figuresArray count]];
         UIView *secondFigure = [self.figuresArray objectAtIndex:arc4random() % [self.figuresArray count]];
         
+        [UIView setAnimationsEnabled:YES];
+        
+        [UIView animateWithDuration:1 delay:1 options:0 animations:^{
+            CGRect tempRect = firstFigure.frame;
+            [firstFigure setFrame:secondFigure.frame];
+            [secondFigure setFrame:tempRect];
+            
+            [self.mainView bringSubviewToFront:firstFigure];
+            [self.mainView bringSubviewToFront:secondFigure];
+        } completion:^(BOOL finished) {
+        }];
+        
+        /*
         [UIView animateWithDuration:1 animations:^{
             CGRect tempRect = firstFigure.frame;
             [firstFigure setFrame:secondFigure.frame];
@@ -161,8 +174,17 @@
             [self.mainView bringSubviewToFront:firstFigure];
             [self.mainView bringSubviewToFront:secondFigure];
         }];
+         */
     }
 }
+
++ (void)animateWithDuration:(NSTimeInterval)duration
+                 animations:(void (^)(void))animations
+                 completion:(void (^)(BOOL finished))completion {
+    
+}
+
+
 
 - (CGRect) makeMainRect {
     NSInteger x = 0;
