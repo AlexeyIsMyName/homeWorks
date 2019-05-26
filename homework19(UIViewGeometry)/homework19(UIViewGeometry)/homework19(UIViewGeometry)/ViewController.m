@@ -39,8 +39,10 @@
     self.mainView = [[UIView alloc] initWithFrame:mainRect];
     self.mainView.backgroundColor = [UIColor whiteColor];
     
-    self.mainView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin |
-    UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
+    self.mainView.autoresizingMask =    UIViewAutoresizingFlexibleTopMargin |
+                                        UIViewAutoresizingFlexibleLeftMargin |
+                                        UIViewAutoresizingFlexibleBottomMargin |
+                                        UIViewAutoresizingFlexibleRightMargin;
     
     [self.view addSubview:self.mainView];
     
@@ -164,36 +166,21 @@
             [self.mainView bringSubviewToFront:secondFigure];
         } completion:^(BOOL finished) {
         }];
-        
-        /*
-        [UIView animateWithDuration:1 animations:^{
-            CGRect tempRect = firstFigure.frame;
-            [firstFigure setFrame:secondFigure.frame];
-            [secondFigure setFrame:tempRect];
-            
-            [self.mainView bringSubviewToFront:firstFigure];
-            [self.mainView bringSubviewToFront:secondFigure];
-        }];
-         */
     }
-}
-
-+ (void)animateWithDuration:(NSTimeInterval)duration
-                 animations:(void (^)(void))animations
-                 completion:(void (^)(BOOL finished))completion {
-    
 }
 
 - (CGRect) makeMainRect {
     NSInteger x = 0;
     NSInteger y = 0;
+    
     if (self.view.bounds.size.height > self.view.bounds.size.width) {
         y = (self.view.bounds.size.height - self.view.bounds.size.width) / 2;
     } else {
         x = (self.view.bounds.size.width - self.view.bounds.size.height) / 2;
     }
+    
     NSInteger size = self.view.bounds.size.height < self.view.bounds.size.width ?
-                        self.view.bounds.size.height : self.view.bounds.size.width;
+                     self.view.bounds.size.height : self.view.bounds.size.width;
     
     self.sizeCell = size / 8;
     
