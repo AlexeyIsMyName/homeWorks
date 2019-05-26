@@ -184,8 +184,6 @@
     
 }
 
-
-
 - (CGRect) makeMainRect {
     NSInteger x = 0;
     NSInteger y = 0;
