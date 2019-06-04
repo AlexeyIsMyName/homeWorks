@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -23,13 +23,18 @@ class ViewController: UIViewController {
          5! добавьте смену цвета на рандомный
         */
         
-        let x = self.view.frame.minX;
-        let xMax = self.view.frame.maxX - 50;
+        let rectHeight: CGFloat = 100;
+        let rectWidth: CGFloat = 100;
         
-        let view1: UIView = .init(frame: CGRect(x: x, y: 100, width: 100, height: 100));
-        let view2: UIView = .init(frame: CGRect(x: x, y: 250, width: 100, height: 100));
-        let view3: UIView = .init(frame: CGRect(x: x, y: 400, width: 100, height: 100));
-        let view4: UIView = .init(frame: CGRect(x: x, y: 550, width: 100, height: 100));
+        let xMin = self.view.frame.minX;
+        let yMin = self.view.frame.minY;
+        let xMax = self.view.frame.maxX;
+        let yMax = self.view.frame.maxY;
+        
+        let view1: UIView = .init(frame: CGRect(x: xMin, y: 200, width: rectWidth, height: rectHeight));
+        let view2: UIView = .init(frame: CGRect(x: xMin, y: 350, width: rectWidth, height: rectHeight));
+        let view3: UIView = .init(frame: CGRect(x: xMin, y: 500, width: rectWidth, height: rectHeight));
+        let view4: UIView = .init(frame: CGRect(x: xMin, y: 650, width: rectWidth, height: rectHeight));
         
         view1.backgroundColor = randomColor();
         view2.backgroundColor = randomColor();
@@ -45,7 +50,7 @@ class ViewController: UIViewController {
                        delay: 0,
                        options: [.curveEaseInOut, .repeat, .autoreverse],
                        animations: {
-                        view1.center = CGPoint(x: xMax, y: view1.center.y);
+                        view1.center = CGPoint(x: xMax - rectWidth / 2, y: view1.center.y);
                         view1.backgroundColor = randomColor();
         }) { (Bool) in
         }
@@ -54,7 +59,7 @@ class ViewController: UIViewController {
                        delay: 0,
                        options: [.curveEaseIn, .repeat, .autoreverse],
                        animations: {
-                        view2.center = CGPoint(x: xMax, y: view2.center.y);
+                        view2.center = CGPoint(x: xMax - rectWidth / 2, y: view2.center.y);
                         view2.backgroundColor = randomColor();
         }) { (Bool) in
         }
@@ -63,7 +68,7 @@ class ViewController: UIViewController {
                        delay: 0,
                        options: [.curveEaseOut, .repeat, .autoreverse],
                        animations: {
-                        view3.center = CGPoint(x: xMax, y: view3.center.y);
+                        view3.center = CGPoint(x: xMax - rectWidth / 2, y: view3.center.y);
                         view3.backgroundColor = randomColor();
         }) { (Bool) in
         }
@@ -72,26 +77,62 @@ class ViewController: UIViewController {
                        delay: 0,
                        options: [.curveLinear, .repeat, .autoreverse],
                        animations: {
-                        view4.center = CGPoint(x: xMax, y: view4.center.y);
+                        view4.center = CGPoint(x: xMax - rectWidth / 2, y: view4.center.y);
                         view4.backgroundColor = randomColor();
         }) { (Bool) in
         }
         
+        /*
+         Студент
+         5! Добавьте еще четыре квадратные вьюхи по углам - красную, желтую, зеленую и синюю
+         6! За одинаковое время и при одинаковой интерполяции двигайте их всех случайно, либо по, либо против часовой стрелки в другой угол.
+         7! Когда анимация закончиться повторите все опять: выберите направление и передвиньте всех :)
+         8! Вьюха должна принимать в новом углу цвет той вьюхи, что была здесь до него ;)
+        */
         
+        let view5: UIView = .init(frame: CGRect(x: xMin,
+                                                y: yMin,
+                                                width: rectWidth,
+                                                height: rectHeight));
+        
+        let view6: UIView = .init(frame: CGRect(x: xMin,
+                                                y: yMax - rectWidth,
+                                                width: rectWidth,
+                                                height: rectHeight));
+        
+        let view7: UIView = .init(frame: CGRect(x: xMax - rectWidth,
+                                                y: yMax - rectWidth,
+                                                width: rectWidth,
+                                                height: rectHeight));
+        
+        let view8: UIView = .init(frame: CGRect(x: xMax - rectWidth,
+                                                y: yMin,
+                                                width: rectWidth,
+                                                height: rectHeight));
+        
+        view5.backgroundColor = .red;
+        view6.backgroundColor = .yellow;
+        view7.backgroundColor = .green;
+        view8.backgroundColor = .blue;
+        
+        view5.alpha = 0.5;
+        view6.alpha = 0.5;
+        view7.alpha = 0.5;
+        view8.alpha = 0.5;
+        
+        self.view.addSubview(view5);
+        self.view.addSubview(view6);
+        self.view.addSubview(view7);
+        self.view.addSubview(view8);
+        
+        randomAnimate(view: self.view);
+        
+        /*
+         Мастер
+         8. Нарисуйте несколько анимационных картинок человечка, который ходит.
+         9. Добавьте несколько человечков на эту композицию и заставьте их ходить
+        */
     }
-
-    /*
-     Студент
-     5. Добавьте еще четыре квадратные вьюхи по углам - красную, желтую, зеленую и синюю
-     6. За одинаковое время и при одинаковой интерполяции двигайте их всех случайно, либо по, либо против часовой стрелки в другой угол.
-     7. Когда анимация закончиться повторите все опять: выберите направление и передвиньте всех :)
-     8. Вьюха должна принимать в новом углу цвет той вьюхи, что была здесь до него ;)
-     
-     Мастер
-     8. Нарисуйте несколько анимационных картинок человечка, который ходит.
-     9. Добавьте несколько человечков на эту композицию и заставьте их ходить
-     
-    */
 
 }
 
@@ -100,4 +141,44 @@ func randomColor () -> (UIColor) {
     let g = CGFloat.random(in: 0.0 ..< 256.0) / 255.0;
     let b = CGFloat.random(in: 0.0 ..< 256.0) / 255.0;
     return UIColor.init(red: r, green: g, blue: b, alpha: 1.0);
+}
+
+func randomAnimate (view: UIView) -> () {
+    
+    var frames = Array<CGRect>();
+    var colors = Array<UIColor>();
+    var views = Array<UIView>();
+    
+    frames.append(view.subviews[7].frame);
+    colors.append(view.subviews[7].backgroundColor ?? UIColor.white);
+    
+    for index in 4...7 {
+        frames.append(view.subviews[index].frame);
+        colors.append(view.subviews[index].backgroundColor ?? UIColor.white);
+        views.append(view.subviews[index]);
+    }
+    
+    colors.append(view.subviews[4].backgroundColor ?? UIColor.white);
+    frames.append(view.subviews[4].frame);
+    
+    let randomBool = Bool.random();
+        
+        UIView.animate(withDuration: 3,
+                       delay: 0,
+                       options: [.curveLinear],
+                       animations: {
+                        for index in 1...4 {
+                            let finishView = views[index - 1];
+                        
+                            if randomBool {
+                                finishView.frame = frames[index + 1];
+                                finishView.backgroundColor = colors[index + 1];
+                            } else {
+                                finishView.frame = frames[index - 1];
+                                finishView.backgroundColor = colors[index - 1];
+                            }
+                        }
+        }) { (Bool) in
+            randomAnimate(view: view);
+        }
 }
