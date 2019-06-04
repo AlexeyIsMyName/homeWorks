@@ -10,9 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait;
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let imageView3: UIImageView = .init(frame: CGRect(x: 0, y: 0, width: 768, height: 1024));
+        imageView3.backgroundColor = .clear;
+        let image0: UIImage = .init(imageLiteralResourceName: "space.jpg");
+        imageView3.image = image0;
+        self.view.addSubview(imageView3);
         
         /*
          Ученик.
@@ -115,10 +125,10 @@ class ViewController: UIViewController {
         view7.backgroundColor = .green;
         view8.backgroundColor = .blue;
         
-        view5.alpha = 0.5;
-        view6.alpha = 0.5;
-        view7.alpha = 0.5;
-        view8.alpha = 0.5;
+        view5.alpha = 0.7;
+        view6.alpha = 0.7;
+        view7.alpha = 0.7;
+        view8.alpha = 0.7;
         
         self.view.addSubview(view5);
         self.view.addSubview(view6);
@@ -129,11 +139,65 @@ class ViewController: UIViewController {
         
         /*
          Мастер
-         8. Нарисуйте несколько анимационных картинок человечка, который ходит.
-         9. Добавьте несколько человечков на эту композицию и заставьте их ходить
+         8! Нарисуйте несколько анимационных картинок человечка, который ходит.
+         9! Добавьте несколько человечков на эту композицию и заставьте их ходить
         */
+    
+        let scale = 0.8;
+        
+        let imageView2: UIImageView = .init(frame: CGRect(x: 500, y: 500, width: 480 * scale, height: 480 * scale));
+        imageView2.backgroundColor = .clear;
+        let imageRocket0: UIImage = .init(imageLiteralResourceName: "rocket0.gif");
+        let imageRocket1: UIImage = .init(imageLiteralResourceName: "rocket1.gif");
+        let imageRocket2: UIImage = .init(imageLiteralResourceName: "rocket2.gif");
+        let imageRocket3: UIImage = .init(imageLiteralResourceName: "rocket3.gif");
+        
+        let imagesRocket: Array = [imageRocket0, imageRocket1, imageRocket2, imageRocket3];
+        
+        imageView2.animationImages = imagesRocket;
+        imageView2.animationDuration = 0.8;
+        imageView2.startAnimating();
+        self.view.addSubview(imageView2);
+        randomAnimateImage(imageView: imageView2);
+        
+        let imageView: UIImageView = .init(frame: CGRect(x: 100, y: 100, width: 348 * scale, height: 273 * scale));
+        imageView.backgroundColor = .clear;
+        let imageCat0: UIImage = .init(imageLiteralResourceName: "cat0.gif");
+        let imageCat1: UIImage = .init(imageLiteralResourceName: "cat1.gif");
+        let imageCat2: UIImage = .init(imageLiteralResourceName: "cat2.gif");
+        let imageCat3: UIImage = .init(imageLiteralResourceName: "cat3.gif");
+        
+        let imagesCat: Array = [imageCat0, imageCat1, imageCat2, imageCat3];
+        
+        imageView.animationImages = imagesCat;
+        imageView.animationDuration = 0.8;
+        imageView.startAnimating();
+        self.view.addSubview(imageView);
+        randomAnimateImage(imageView: imageView);
     }
+}
 
+func randomAnimateImage (imageView: UIImageView) -> () {
+    let randomX = CGFloat.random(in: 0...768);
+    let randomY = CGFloat.random(in: 0...1024);
+    let randomCGPoint = CGPoint(x: randomX, y: randomY);
+    let randomScale = CGFloat.random(in: 0.7...1.3);
+    
+    var t = CGAffineTransform.identity
+    if imageView.frame.height > 350 {
+        t = t.rotated(by: CGFloat.pi);
+    }
+    t = t.scaledBy(x: randomScale, y: randomScale)
+
+    UIView.animate(withDuration: 4,
+                   delay: 0,
+                   options: [.curveLinear],
+                   animations: {
+                    imageView.transform = t
+                    imageView.center = randomCGPoint;
+    }) { (Bool) in
+        randomAnimateImage(imageView: imageView);
+    }
 }
 
 func randomColor () -> (UIColor) {
@@ -149,17 +213,17 @@ func randomAnimate (view: UIView) -> () {
     var colors = Array<UIColor>();
     var views = Array<UIView>();
     
-    frames.append(view.subviews[7].frame);
-    colors.append(view.subviews[7].backgroundColor ?? UIColor.white);
+    frames.append(view.subviews[8].frame);
+    colors.append(view.subviews[8].backgroundColor ?? UIColor.white);
     
-    for index in 4...7 {
+    for index in 5...8 {
         frames.append(view.subviews[index].frame);
         colors.append(view.subviews[index].backgroundColor ?? UIColor.white);
         views.append(view.subviews[index]);
     }
     
-    colors.append(view.subviews[4].backgroundColor ?? UIColor.white);
-    frames.append(view.subviews[4].frame);
+    colors.append(view.subviews[5].backgroundColor ?? UIColor.white);
+    frames.append(view.subviews[5].frame);
     
     let randomBool = Bool.random();
         
@@ -182,3 +246,4 @@ func randomAnimate (view: UIView) -> () {
             randomAnimate(view: view);
         }
 }
+
