@@ -41,6 +41,28 @@ class ViewController: UIViewController {
                 mainFieldView.addSubview(view);
             }
         }
+        
+        var correctCell = 1;
+        for view in mainFieldView.subviews where view.backgroundColor!.isEqual(UIColor.black) {
+            let figereLength = view.frame.width / 2;
+            if view.backgroundColor!.isEqual(UIColor.black) && correctCell <= 12 {
+                let figureView: UIView = .init(frame: CGRect.init(x: 0 + figereLength / 2,
+                                                            y: 0 + figereLength / 2,
+                                                            width: figereLength,
+                                                            height: figereLength));
+                figureView.backgroundColor = .red;
+                view.addSubview(figureView);
+            }
+            if view.backgroundColor!.isEqual(UIColor.black) && correctCell >= 21 {
+                let figureView: UIView = .init(frame: CGRect.init(x: 0 + figereLength / 2,
+                                                                  y: 0 + figereLength / 2,
+                                                                  width: figereLength,
+                                                                  height: figereLength));
+                figureView.backgroundColor = .white;
+                view.addSubview(figureView);
+            }
+            correctCell += 1;
+        }
     }
     
     func randomColor () -> (UIColor) {
