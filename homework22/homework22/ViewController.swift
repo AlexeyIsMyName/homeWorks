@@ -10,20 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var mainFieldView = UIView()
-    weak var draggingView = UIView()
-    var touchOffSet = CGPoint()
+    var mainFieldView = UIView();
+    var figures = Array<UIView>();
+    weak var draggingView = UIView();
+    var touchOffSet = CGPoint();
     
     
     /*
      Уровень супермен (остальных уровней не будет)
      1! Создайте шахматное поле (8х8), используйте черные сабвьюхи
      2! Добавьте бeлые и красные шашки на черные клетки (используйте начальное расположение в шашках)
-     3. Реализуйте механизм драг'н'дроп подобно тому, что я сделал в примере, но с условиями:
-     4. Шашки должны ставать в центр черных клеток.
-     5. Даже если я отпустил шашку над центром белой клетки - она должна переместиться в центр ближайшей к отпусканию черной клетки.
-     6. Шашки не могут становиться друг на друга
-     7. Шашки не могут быть поставлены за пределы поля.
+     3! Реализуйте механизм драг'н'дроп подобно тому, что я сделал в примере, но с условиями:
+     4! Шашки должны ставать в центр черных клеток.
+     5! Даже если я отпустил шашку над центром белой клетки - она должна переместиться в центр ближайшей к отпусканию черной клетки.
+     6! Шашки не могут становиться друг на друга
+     7! Шашки не могут быть поставлены за пределы поля.
      */
 
     override func viewDidLoad() {
@@ -71,6 +72,7 @@ class ViewController: UIViewController {
                                                             height: figereLength));
                 figureView.backgroundColor = .red;
                 figureView.tag = 1;
+                figures.append(figureView);
                 self.mainFieldView.addSubview(figureView);
             }
             
@@ -83,6 +85,7 @@ class ViewController: UIViewController {
                                                                   height: figereLength));
                 figureView.backgroundColor = .white;
                 figureView.tag = 1;
+                figures.append(figureView);
                 self.mainFieldView.addSubview(figureView);
             }
             correctCell += 1;
@@ -150,10 +153,14 @@ class ViewController: UIViewController {
                 let deltaX = fabsf(Float(view.center.x - (tempDraggingView.center.x)));
                 let deltaY = fabsf(Float(view.center.y - (tempDraggingView.center.y)));
                 
-                //let checkPoint = CGPoint(x: view.frame.midX, y: view.frame.midY);
-                //let checkView = self.view.hitTest(checkPoint, with: event);
+                var figureIsNotHere: Bool = true;
+                for figure in figures {
+                    if figure.center == view.center {
+                        figureIsNotHere = false;
+                    }
+                }
                 
-                if tempDelta > sqrtf(Float(deltaX * deltaX + deltaY * deltaY)) {
+                if tempDelta > sqrtf(Float(deltaX * deltaX + deltaY * deltaY)) && figureIsNotHere {
                     nearPoint = view.center;
                     tempDelta = sqrtf(Float(deltaX * deltaX + deltaY * deltaY));
                 }
