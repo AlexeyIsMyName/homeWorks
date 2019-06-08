@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     weak var draggingView = UIView();
     var touchOffSet = CGPoint();
     
-    
     /*
      Уровень супермен (остальных уровней не будет)
      1! Создайте шахматное поле (8х8), используйте черные сабвьюхи
