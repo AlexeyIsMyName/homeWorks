@@ -12,6 +12,7 @@
 		5B41B18522AC053100DEF17D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B41B18322AC053100DEF17D /* Main.storyboard */; };
 		5B41B18722AC053200DEF17D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B41B18622AC053200DEF17D /* Assets.xcassets */; };
 		5B41B18A22AC053200DEF17D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B41B18822AC053200DEF17D /* LaunchScreen.storyboard */; };
+		5B41B19222AFDD1900DEF17D /* maincable_midspan.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5B41B19122AFDD1900DEF17D /* maincable_midspan.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		5B41B18622AC053200DEF17D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B41B18922AC053200DEF17D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B41B18B22AC053200DEF17D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B41B19122AFDD1900DEF17D /* maincable_midspan.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = maincable_midspan.jpeg; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				5B41B18622AC053200DEF17D /* Assets.xcassets */,
 				5B41B18822AC053200DEF17D /* LaunchScreen.storyboard */,
 				5B41B18B22AC053200DEF17D /* Info.plist */,
+				5B41B19122AFDD1900DEF17D /* maincable_midspan.jpeg */,
 			);
 			path = "homework23(Gestures)";
 			sourceTree = "<group>";
@@ -123,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B41B18A22AC053200DEF17D /* LaunchScreen.storyboard in Resources */,
+				5B41B19222AFDD1900DEF17D /* maincable_midspan.jpeg in Resources */,
 				5B41B18722AC053200DEF17D /* Assets.xcassets in Resources */,
 				5B41B18522AC053100DEF17D /* Main.storyboard in Resources */,
 			);
