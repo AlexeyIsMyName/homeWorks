@@ -9,7 +9,8 @@
 import UIKit
 
 class DrawingView: UIView {
-
+    var isWillTransition = false
+    var starsRects = [CGRect]()
     /*
      Ученик.
      1! Нарисуйте пятиконечную звезду :)
@@ -18,7 +19,7 @@ class DrawingView: UIView {
      
      Студент.
      4! Закрасте звезду любым цветом оО
-     5. При каждой перерисовке рисуйте пять таких звезд (только мелких) в рандомных точках экрана
+     5! При каждой перерисовке рисуйте пять таких звезд (только мелких) в рандомных точках экрана
      
      Мастер
      6. После того как вы попрактиковались со звездами нарисуйте что-то свое, проявите творчество :)
@@ -31,10 +32,7 @@ class DrawingView: UIView {
     // An empty implementation adversely affects performance during animation.
     
     override func draw(_ rect: CGRect) {
-        
-        let context: CGContext = UIGraphicsGetCurrentContext()!;
-        
-        //Star is made by lines
+        let context = UIGraphicsGetCurrentContext()!
         let offset: CGFloat = 50.0
         let maxRectSize = min((rect.width - offset * 2), (rect.height - offset * 2))
         
@@ -42,14 +40,57 @@ class DrawingView: UIView {
                                    y: (rect.height - maxRectSize) / 2,
                                    width: maxRectSize,
                                    height: maxRectSize)
+
+        self.drawStar(starRect: starRect, context: context)
         
-        let serviceOffset1 = starRect.height / 4
+        if self.starsRects.count > 40 {
+            self.starsRects.removeAll()
+        }
+        
+        if isWillTransition {
+            self.drawRandomStar(context: context)
+        }
+    }
+    
+    func randomColor () -> (UIColor) {
+        let r = CGFloat.random(in: 0...256) / 256
+        let g = CGFloat.random(in: 0...256) / 256
+        let b = CGFloat.random(in: 0...256) / 256
+        return UIColor.init(red: r, green: g, blue: b, alpha: 1.0)
+    }
+    
+    func drawRandomStar (context: CGContext) -> () {
+        let scaleByBigStar: CGFloat = 0.1
+        let maxRectSize = min(self.frame.width * scaleByBigStar, self.frame.height * scaleByBigStar)
+        let minRectSize = maxRectSize / 2;
+        
+        for _ in 1...5 {
+            let randomRectSize = CGFloat.random(in: minRectSize...maxRectSize)
+            let randomX = CGFloat.random(in: self.frame.minX...self.frame.maxX)
+            let randomY = CGFloat.random(in: self.frame.minY...self.frame.maxY)
+            
+            let starRect = CGRect.init(x: randomX,
+                                       y: randomY,
+                                       width: randomRectSize,
+                                       height: randomRectSize)
+            
+            self.starsRects.append(starRect)
+        }
+        
+        for starRect in self.starsRects {
+            self.drawStar(starRect: starRect, context: context)
+        }
+    }
+    
+    func drawStar (starRect: CGRect, context: CGContext) -> () {
+        //Star is made by lines
+        let serviceOffsetForStar = starRect.height / 4
         
         let point1 = CGPoint.init(x: starRect.minX, y: starRect.maxY)
         let point2 = CGPoint.init(x: starRect.midX, y: starRect.minY)
         let point3 = CGPoint.init(x: starRect.maxX, y: starRect.maxY)
-        let point4 = CGPoint.init(x: starRect.minX, y: starRect.minY + serviceOffset1)
-        let point5 = CGPoint.init(x: starRect.maxX, y: starRect.minY + serviceOffset1)
+        let point4 = CGPoint.init(x: starRect.minX, y: starRect.minY + serviceOffsetForStar)
+        let point5 = CGPoint.init(x: starRect.maxX, y: starRect.minY + serviceOffsetForStar)
         
         let starPoints = [point2, point3, point4, point5, point1];
         
@@ -61,29 +102,11 @@ class DrawingView: UIView {
         }
         
         context.fillPath()
-        //context.strokePath()
-        
-        //Ellipses are made by gectangles
-        context.setStrokeColor(UIColor.green.cgColor)
-        context.setLineWidth(2.0)
-        
-        let serviseOffset2 = serviceOffset1 / 6
-        
-        for point in starPoints {
-            let ellipseRect = CGRect.init(x: point.x - serviseOffset2,
-                                          y: point.y - serviseOffset2,
-                                          width: serviseOffset2 * 2,
-                                          height: serviseOffset2 * 2)
-            
-            context.strokeEllipse(in: ellipseRect)
-        }
-        
-        context.strokePath()
         
         //Make lines both ellipses
         let ellipsesPoints = [point1, point4, point2, point5, point3];
         
-        context.setStrokeColor(UIColor.blue.cgColor)
+        context.setStrokeColor(self.randomColor().cgColor)
         context.setLineWidth(2.0)
         
         context.move(to: point3)
@@ -92,12 +115,20 @@ class DrawingView: UIView {
         }
         
         context.strokePath()
-    }
-    
-    func randomColor () -> (UIColor) {
-        let r = CGFloat.random(in: 0...256) / 256
-        let g = CGFloat.random(in: 0...256) / 256
-        let b = CGFloat.random(in: 0...256) / 256
-        return UIColor.init(red: r, green: g, blue: b, alpha: 1.0)
+        
+        //Ellipses are made by gectangles
+        context.setFillColor(self.randomColor().cgColor)
+        
+        let serviseOffsetForEllipse = serviceOffsetForStar / 6
+        
+        for point in starPoints {
+            let ellipseRect = CGRect.init(x: point.x - serviseOffsetForEllipse,
+                                          y: point.y - serviseOffsetForEllipse,
+                                          width: serviseOffsetForEllipse * 2,
+                                          height: serviseOffsetForEllipse * 2)
+            context.fillEllipse(in: ellipseRect)
+        }
+        
+        context.fillPath()
     }
 }

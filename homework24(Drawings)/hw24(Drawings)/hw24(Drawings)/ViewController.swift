@@ -22,8 +22,8 @@ class ViewController: UIViewController {
     override func viewWillTransition(to size: CGSize,
                                      with coordinator: UIViewControllerTransitionCoordinator) {
         
-        self.drawingView.setNeedsDisplay();
-    
+        self.drawingView.setNeedsDisplay()
+        self.drawingView.isWillTransition = true;
     }
 
 }
