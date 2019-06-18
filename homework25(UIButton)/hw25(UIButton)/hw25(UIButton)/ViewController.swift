@@ -10,20 +10,36 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    enum ArithmeticOperator {
-        case addition, subtraction, multiplication, division
+    enum ArithmeticOperator: String {
+        case addition = " + "
+        case subtraction = " - "
+        case multiplication = " X "
+        case division = " / "
+        case none = " "
     }
     
-    var outputNumber = String()
+    enum Operator: String {
+        case cleanAll = " AC "
+        case cleanEntry = " CE "
+        case assignment = " = "
+    }
+    
+    let dotChar: Character = "."
+    let errorMessage = "Error"
+    
     var firstOperand = Float()
     var secondOperand = Float()
-    var binaryOperator = ArithmeticOperator.addition
+    var outputNumber = String()
     var isPushArithmeticButton = Bool()
+    var arithmeticOperator = ArithmeticOperator.addition
     
     @IBOutlet weak var outputLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     
     @IBAction func numberButton(_ sender: UIButton) {
+        if !isPushArithmeticButton {
+            outputNumber.removeAll()
+        }
         var digit = Int()
         switch sender.tag {
             case 0: digit = 0
@@ -45,7 +61,7 @@ class ViewController: UIViewController {
     
     @IBAction func addDot(_ sender: UIButton) {
         if !isDotHere(string: outputNumber) && !outputNumber.isEmpty {
-            outputNumber.append(".")
+            outputNumber.append(dotChar)
         }
         outputLabel.text = outputNumber
     }
@@ -59,13 +75,13 @@ class ViewController: UIViewController {
     
     @IBAction func operationBatton(_ sender: UIButton) {
         switch sender.tag {
-        case 0: cleanAll(text: "AC")
-        case 1: cleanEntry(text: "CE")
-        case 2: multiplication(text: "X")
-        case 3: division(text: "/")
-        case 4: addition(text: "+")
-        case 5: subtraction(text: "-")
-        case 6: assignment(text: "=")
+        case 0: cleanAll(text: Operator.cleanAll.rawValue)
+        case 1: cleanEntry(text: Operator.cleanEntry.rawValue)
+        case 2: multiplication(text: ArithmeticOperator.multiplication.rawValue)
+        case 3: division(text: ArithmeticOperator.division.rawValue)
+        case 4: addition(text: ArithmeticOperator.addition.rawValue)
+        case 5: subtraction(text: ArithmeticOperator.subtraction.rawValue)
+        case 6: assignment(text: Operator.assignment.rawValue)
         default:
             error()
         }
@@ -104,7 +120,7 @@ class ViewController: UIViewController {
     func isDotHere (string: String) -> (Bool) {
         var bool = false
         for char in string {
-            if char == "." {
+            if char == dotChar {
                 bool = true
             }
         }
@@ -116,43 +132,48 @@ class ViewController: UIViewController {
     func cleanAll (text: String) {
         infoLabel.text = text
         outputNumber.removeAll()
+        firstOperand = 0
+        secondOperand = 0
+        isPushArithmeticButton = false
+        arithmeticOperator = .none
     }
     
     // CE - Clean Entry
     func cleanEntry (text: String) {
-        infoLabel.text = text
+        secondOperand = Float.zero
         outputNumber.removeAll()
+        infoLabel.text = String(firstOperand) + arithmeticOperator.rawValue + text
     }
     
     // Arithmetic operations (addition, subtraction, multiplication, division)
     func addition (text: String) {
         setFirstOperand()
-        binaryOperator = .addition
-        infoLabel.text = String(firstOperand) + " " + text
+        arithmeticOperator = .addition
+        infoLabel.text = String(firstOperand) + ArithmeticOperator.none.rawValue + text
         outputNumber.removeAll()
         isPushArithmeticButton = true
     }
     
     func subtraction (text: String) {
         setFirstOperand()
-        binaryOperator = .subtraction
-        infoLabel.text = String(firstOperand) + " " + text
+        arithmeticOperator = .subtraction
+        infoLabel.text = String(firstOperand) + ArithmeticOperator.none.rawValue + text
         outputNumber.removeAll()
         isPushArithmeticButton = true
     }
     
     func multiplication (text: String) {
         setFirstOperand()
-        binaryOperator = .multiplication
-        infoLabel.text = String(firstOperand) + " " + text
+        arithmeticOperator = .multiplication
+        infoLabel.text = String(firstOperand) + ArithmeticOperator.none.rawValue + text
         outputNumber.removeAll()
         isPushArithmeticButton = true
     }
     
     func division (text: String) {
         setFirstOperand()
-        binaryOperator = .division
-        infoLabel.text = String(firstOperand) + " " + text
+        arithmeticOperator = .division
+        infoLabel.text = String(firstOperand) + ArithmeticOperator.none.rawValue + text
         outputNumber.removeAll()
         isPushArithmeticButton = true
     }
@@ -166,19 +187,20 @@ class ViewController: UIViewController {
             setSecondOperand()
         }
         
-        switch binaryOperator {
+        switch arithmeticOperator {
         case .addition:
             result = firstOperand + secondOperand
-            infoLabel.text = String(firstOperand) + " + " + String(secondOperand) + text
+            infoLabel.text = String(firstOperand) + arithmeticOperator.rawValue + String(secondOperand) + text
         case .subtraction:
             result = firstOperand - secondOperand
-            infoLabel.text = String(firstOperand) + " - " + String(secondOperand) + text
+            infoLabel.text = String(firstOperand) + arithmeticOperator.rawValue + String(secondOperand) + text
         case .multiplication:
             result = firstOperand * secondOperand
-            infoLabel.text = String(firstOperand) + " X " + String(secondOperand) + text
+            infoLabel.text = String(firstOperand) + arithmeticOperator.rawValue + String(secondOperand) + text
         case .division:
             result = firstOperand / secondOperand
-            infoLabel.text = String(firstOperand) + " / " + String(secondOperand) + text
+            infoLabel.text = String(firstOperand) + arithmeticOperator.rawValue + String(secondOperand) + text
+        case .none: break
         }
         
         outputNumber = String(result)
@@ -187,14 +209,14 @@ class ViewController: UIViewController {
     }
     
     func error () {
-        infoLabel.text = "Error"
+        infoLabel.text = errorMessage
     }
     
     func setFirstOperand () {
         if let number = Float(outputNumber) {
             firstOperand = number
         } else {
-            firstOperand = 0
+            firstOperand = Float.zero
         }
     }
     
@@ -202,7 +224,7 @@ class ViewController: UIViewController {
         if let number = Float(outputNumber) {
             secondOperand = number
         } else {
-            secondOperand = 0
+            secondOperand = Float.zero
         }
     }
     
