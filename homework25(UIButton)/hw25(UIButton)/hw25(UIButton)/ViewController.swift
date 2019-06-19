@@ -30,16 +30,13 @@ class ViewController: UIViewController {
     var firstOperand = Float()
     var secondOperand = Float()
     var outputNumber = String()
-    var isPushArithmeticButton = Bool()
+    var isPushedArithmeticButton = Bool()
     var arithmeticOperator = ArithmeticOperator.addition
     
     @IBOutlet weak var outputLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     
     @IBAction func numberButton(_ sender: UIButton) {
-        if !isPushArithmeticButton {
-            outputNumber.removeAll()
-        }
         var digit = Int()
         switch sender.tag {
             case 0: digit = 0
@@ -115,7 +112,6 @@ class ViewController: UIViewController {
         */
     }
     
-    
     // Checking string for dot charecter -> bool
     func isDotHere (string: String) -> (Bool) {
         var bool = false
@@ -134,7 +130,7 @@ class ViewController: UIViewController {
         outputNumber.removeAll()
         firstOperand = 0
         secondOperand = 0
-        isPushArithmeticButton = false
+        isPushedArithmeticButton = false
         arithmeticOperator = .none
     }
     
@@ -151,7 +147,7 @@ class ViewController: UIViewController {
         arithmeticOperator = .addition
         infoLabel.text = String(firstOperand) + ArithmeticOperator.none.rawValue + text
         outputNumber.removeAll()
-        isPushArithmeticButton = true
+        isPushedArithmeticButton = true
     }
     
     func subtraction (text: String) {
@@ -159,7 +155,7 @@ class ViewController: UIViewController {
         arithmeticOperator = .subtraction
         infoLabel.text = String(firstOperand) + ArithmeticOperator.none.rawValue + text
         outputNumber.removeAll()
-        isPushArithmeticButton = true
+        isPushedArithmeticButton = true
     }
     
     func multiplication (text: String) {
@@ -167,7 +163,7 @@ class ViewController: UIViewController {
         arithmeticOperator = .multiplication
         infoLabel.text = String(firstOperand) + ArithmeticOperator.none.rawValue + text
         outputNumber.removeAll()
-        isPushArithmeticButton = true
+        isPushedArithmeticButton = true
     }
     
     func division (text: String) {
@@ -175,17 +171,19 @@ class ViewController: UIViewController {
         arithmeticOperator = .division
         infoLabel.text = String(firstOperand) + ArithmeticOperator.none.rawValue + text
         outputNumber.removeAll()
-        isPushArithmeticButton = true
+        isPushedArithmeticButton = true
     }
-    
     
     // Assignment operator
     func assignment (text: String) {
         var result = Float()
         
-        if isPushArithmeticButton {
+        if isPushedArithmeticButton {
             setSecondOperand()
         }
+        
+        //let fO: CGFloat = CGFloat(firstOperand)
+        //let sO: CGFloat = CGFloat(secondOperand)
         
         switch arithmeticOperator {
         case .addition:
@@ -202,16 +200,18 @@ class ViewController: UIViewController {
             infoLabel.text = String(firstOperand) + arithmeticOperator.rawValue + String(secondOperand) + text
         case .none: break
         }
-        
+
         outputNumber = String(result)
         firstOperand = result
-        isPushArithmeticButton = false
+        isPushedArithmeticButton = false
     }
     
+    // Error message
     func error () {
         infoLabel.text = errorMessage
     }
     
+    // Set operands functions
     func setFirstOperand () {
         if let number = Float(outputNumber) {
             firstOperand = number
@@ -227,6 +227,5 @@ class ViewController: UIViewController {
             secondOperand = Float.zero
         }
     }
-    
 }
 
