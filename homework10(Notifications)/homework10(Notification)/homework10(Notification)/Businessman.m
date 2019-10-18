@@ -87,9 +87,7 @@
     CGFloat averagePrice = [valueAveragePrice floatValue];
     
     if ([self.averagePriceHistory count] > 0) {
-        NSUInteger indexLastValueAveragePriceHistory = [self.averagePriceHistory count] - 1;
-        CGFloat lastAveragePrice = [[self.averagePriceHistory objectAtIndex: indexLastValueAveragePriceHistory] floatValue];
-        
+        CGFloat lastAveragePrice = [[self.averagePriceHistory lastObject] floatValue];
         NSInteger currentInflation = averagePrice / lastAveragePrice * 100 - 100;
         
         CGFloat indexClearProfit = averagePrice / 100 * self.taxLevel;
@@ -106,13 +104,11 @@
 - (void) tellMeAboutQualityOfLife {
     if ([self.inflationHistory count] > 1 && [self.indexClearProfitHistory count] > 1) {
         
-        NSInteger indexLastValueInflationHistory = [self.inflationHistory count] - 1;
-        NSInteger currentValueInflation = [[self.inflationHistory objectAtIndex: indexLastValueInflationHistory] integerValue];
-        NSInteger lastValueInflation = [[self.inflationHistory objectAtIndex: indexLastValueInflationHistory - 1] integerValue];
-        //indexClearProfit
-        NSInteger indexLastValueIndexClearProfitHistory = [self.indexClearProfitHistory count] - 1;
-        NSInteger currentValueIndexClearProfit = [[self.indexClearProfitHistory objectAtIndex: indexLastValueIndexClearProfitHistory] integerValue];
-        NSInteger lastValueIndexClearProfit = [[self.indexClearProfitHistory objectAtIndex: indexLastValueIndexClearProfitHistory - 1] integerValue];
+        NSInteger currentValueInflation = [[self.inflationHistory lastObject] integerValue];
+        NSInteger lastValueInflation = [[self.inflationHistory objectAtIndex: [self.inflationHistory count] - 2] integerValue];
+        
+        NSInteger currentValueIndexClearProfit = [[self.indexClearProfitHistory lastObject] integerValue];
+        NSInteger lastValueIndexClearProfit = [[self.indexClearProfitHistory objectAtIndex: [self.indexClearProfitHistory count] - 2] integerValue];
         
         if (currentValueInflation < lastValueInflation && currentValueIndexClearProfit < lastValueIndexClearProfit) {
             NSLog(@"Businessman tells what inflation is less and clear profit is better than there was early, it is good!");

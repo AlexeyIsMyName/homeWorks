@@ -38,9 +38,9 @@
     self.myAppDelegate = [[MyAppDelegate alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-    selector:@selector(governmentNotification:)
-    name:GovernmentTaxLevelDidChangeNotification
-    object:nil];
+                                             selector:@selector(governmentNotification:)
+                                                 name:GovernmentTaxLevelDidChangeNotification
+                                               object:nil];
     
      /*
      Ученик.
@@ -161,6 +161,5 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     NSLog(@"applicationWillTerminate - METHOD");
 }
-
 
 @end

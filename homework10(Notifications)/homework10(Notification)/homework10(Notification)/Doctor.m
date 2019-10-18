@@ -79,7 +79,6 @@
     }
     
     self.salary = salary;
-    
 }
 
 -(void) averagePriceChangedNotification: (NSNotification*) notification {
@@ -88,8 +87,7 @@
     CGFloat averagePrice = [valueAveragePrice floatValue];
     
     if ([self.averagePriceHistory count] > 0) {
-        NSUInteger indexLastValueAveragePriceHistory = [self.averagePriceHistory count] - 1;
-        CGFloat lastAveragePrice = [[self.averagePriceHistory objectAtIndex: indexLastValueAveragePriceHistory] floatValue];
+        CGFloat lastAveragePrice = [[self.averagePriceHistory lastObject] floatValue];
         
         NSInteger currentInflation = averagePrice / lastAveragePrice * 100 - 100;
         NSInteger currentConcumerAbility = self.salary / averagePrice;
@@ -105,20 +103,17 @@
 - (void) tellMeAboutQualityOfLife {
     if ([self.inflationHistory count] > 1 && [self.consumerAbilityHistory count] > 1) {
         
-        NSInteger indexLastValueInflationHistory = [self.inflationHistory count] - 1;
-        NSInteger currentValueInflation = [[self.inflationHistory objectAtIndex: indexLastValueInflationHistory] integerValue];
-        NSInteger lastValueInflation = [[self.inflationHistory objectAtIndex: indexLastValueInflationHistory - 1] integerValue];
+        NSInteger currentValueInflation = [[self.inflationHistory lastObject] integerValue];
+        NSInteger lastValueInflation = [[self.inflationHistory objectAtIndex: [self.inflationHistory count] - 2] integerValue];
     
-        NSInteger indexLastValueConsumerAbilityHistory = [self.consumerAbilityHistory count] - 1;
-        NSInteger currentValueConsumerAbility = [[self.consumerAbilityHistory objectAtIndex: indexLastValueConsumerAbilityHistory] integerValue];
-        NSInteger lastValueConsumerAbility = [[self.consumerAbilityHistory objectAtIndex: indexLastValueConsumerAbilityHistory - 1] integerValue];
+        NSInteger currentValueConsumerAbility = [[self.consumerAbilityHistory lastObject] integerValue];
+        NSInteger lastValueConsumerAbility = [[self.consumerAbilityHistory objectAtIndex: [self.consumerAbilityHistory count] - 2] integerValue];
       
         if (currentValueInflation < lastValueInflation && currentValueConsumerAbility > lastValueConsumerAbility) {
             NSLog(@"Doctor think what life is BETTER than was in the past!");
         } else {
             NSLog(@"Doctor think what life is WORSE than was in the past!");
         }
-        
     }
 }
 
