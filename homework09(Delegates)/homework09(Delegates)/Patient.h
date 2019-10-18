@@ -12,23 +12,23 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum {
-    cough,
-    runnyNose,
-    soreThroat,
-    stomachAche,
-    headAche,
-    temperature,
-    none
+    SymptomCough,
+    SymptomRunnyNose,
+    SymptomSoreThroat,
+    SymptomStomachAche,
+    SymptomHeadAche,
+    SymptomTemperature,
+    SymptomNone
 } Symptom;
 
 typedef enum {
-    head,
-    stomach,
-    leg,
-    throat,
-    heart,
-    tooth,
-    nothing
+    OrganHead,
+    OrganStomach,
+    OrganLeg,
+    OrganThroat,
+    OrganHeart,
+    OrganTooth,
+    OrganNothing
 } Organ;
 
 @protocol PatientDelegate;
@@ -55,7 +55,7 @@ typedef enum {
 
 @protocol PatientDelegate
 
-- (void) patientCure:(Patient*) patient;
+- (void) patientCure:(Patient *) patient;
 
 @end
 

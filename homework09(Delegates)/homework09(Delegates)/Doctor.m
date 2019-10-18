@@ -26,31 +26,31 @@
 
 - (void)patientCure:(nonnull Patient *)patient {
     switch (patient.symptom) {
-        case cough:
+        case SymptomCough:
             patient.rateDoc = arc4random_uniform(5);
             NSLog(@"Doc said: %@ take a cough pill", patient.name);
             break;
-        case runnyNose:
+        case SymptomRunnyNose:
             patient.rateDoc = arc4random_uniform(5);
             NSLog(@"Doc said: %@ take a drops from the common cold", patient.name);
             break;
-        case soreThroat:
+        case SymptomSoreThroat:
             patient.rateDoc = arc4random_uniform(5);
             NSLog(@"Doc said: %@ take a throat spray", patient.name);
             break;
-        case stomachAche:
+        case SymptomStomachAche:
             patient.rateDoc = arc4random_uniform(5);
             NSLog(@"Doc said: %@ buy Mezim", patient.name);
             break;
-        case headAche:
+        case SymptomHeadAche:
             patient.rateDoc = arc4random_uniform(5);
             NSLog(@"Doc said: %@ head not ass", patient.name);
             break;
-        case temperature:
+        case SymptomTemperature:
             patient.rateDoc = arc4random_uniform(5);
             NSLog(@"Doc said: %@ take aspirin", patient.name);
             break;
-        case none:
+        case SymptomNone:
             patient.rateDoc = arc4random_uniform(5);
             NSLog(@"Doc said: %@ go home, you are not sick", patient.name);
             break;
@@ -59,13 +59,13 @@
     }
     
     switch (patient.organ) {
-        case head: [self.raport setObject:@"Head" forKey:patient.name]; break;
-        case stomach: [self.raport setObject:@"Stomach" forKey:patient.name]; break;
-        case leg: [self.raport setObject:@"Leg" forKey:patient.name]; break;
-        case throat: [self.raport setObject:@"Throat" forKey:patient.name]; break;
-        case heart: [self.raport setObject:@"Heart" forKey:patient.name]; break;
-        case tooth: [self.raport setObject:@"Tooth" forKey:patient.name]; break;
-        case nothing: [self.raport setObject:@"Noting" forKey:patient.name]; break;
+        case OrganHead: [self.raport setObject:@"Head" forKey:patient.name]; break;
+        case OrganStomach: [self.raport setObject:@"Stomach" forKey:patient.name]; break;
+        case OrganLeg: [self.raport setObject:@"Leg" forKey:patient.name]; break;
+        case OrganThroat: [self.raport setObject:@"Throat" forKey:patient.name]; break;
+        case OrganHeart: [self.raport setObject:@"Heart" forKey:patient.name]; break;
+        case OrganTooth: [self.raport setObject:@"Tooth" forKey:patient.name]; break;
+        case OrganNothing: [self.raport setObject:@"Noting" forKey:patient.name]; break;
         default:
             break;
     }
