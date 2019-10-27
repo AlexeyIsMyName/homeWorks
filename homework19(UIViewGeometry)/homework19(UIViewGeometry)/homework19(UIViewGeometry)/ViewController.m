@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [UIView setAnimationsEnabled:YES];
     // Do any additional setup after loading the view.
     /*
      Ученик
@@ -39,10 +40,10 @@
     self.mainView = [[UIView alloc] initWithFrame:mainRect];
     self.mainView.backgroundColor = [UIColor whiteColor];
     
-    self.mainView.autoresizingMask =    UIViewAutoresizingFlexibleTopMargin |
-                                        UIViewAutoresizingFlexibleLeftMargin |
-                                        UIViewAutoresizingFlexibleBottomMargin |
-                                        UIViewAutoresizingFlexibleRightMargin;
+    self.mainView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin |
+                                     UIViewAutoresizingFlexibleLeftMargin |
+                                     UIViewAutoresizingFlexibleBottomMargin |
+                                     UIViewAutoresizingFlexibleRightMargin;
     
     [self.view addSubview:self.mainView];
     
@@ -70,9 +71,9 @@
     
     self.figuresArray = [[NSMutableArray alloc] init];
     
-    double ratioFigureByCell = 0.6; // ready
-    double different = (self.sizeCell - self.sizeCell * ratioFigureByCell) / 2; // ready
-    self.sizeFigure = self.sizeCell * ratioFigureByCell; // ready - readonly
+    double ratioFigureByCell = 0.6;
+    double different = (self.sizeCell - self.sizeCell * ratioFigureByCell) / 2;
+    self.sizeFigure = self.sizeCell * ratioFigureByCell;
     self.sizeFigure = self.sizeCell * ratioFigureByCell - 2;
     
     x = self.sizeCell;
@@ -152,21 +153,20 @@
     NSInteger randomCountChange = arc4random() % ([self.figuresArray count] / 2) + 1;
     
     for (NSInteger i = 0; i < randomCountChange; i++) {
-        UIView *firstFigure = [self.figuresArray objectAtIndex:arc4random() % [self.figuresArray count]];
-        UIView *secondFigure = [self.figuresArray objectAtIndex:arc4random() % [self.figuresArray count]];
-        
-        [UIView setAnimationsEnabled:YES];
+        UIView *firstFigure = [self takeRandomFigure];
+        UIView *secondFigure = [self takeRandomFigure];
         
         [UIView animateWithDuration:1 delay:1 options:0 animations:^{
             CGRect tempRect = firstFigure.frame;
             [firstFigure setFrame:secondFigure.frame];
             [secondFigure setFrame:tempRect];
-            
-            [self.mainView bringSubviewToFront:firstFigure];
-            [self.mainView bringSubviewToFront:secondFigure];
         } completion:^(BOOL finished) {
         }];
     }
+}
+
+- (UIView *) takeRandomFigure {
+    return [self.figuresArray objectAtIndex:arc4random() % [self.figuresArray count]];
 }
 
 - (CGRect) makeMainRect {
@@ -179,8 +179,7 @@
         x = (self.view.bounds.size.width - self.view.bounds.size.height) / 2;
     }
     
-    NSInteger size = self.view.bounds.size.height < self.view.bounds.size.width ?
-                     self.view.bounds.size.height : self.view.bounds.size.width;
+    NSInteger size = MIN(self.view.bounds.size.height, self.view.bounds.size.width);
     
     self.sizeCell = size / 8;
     
