@@ -13,7 +13,8 @@
 
 @property (strong, nonatomic) NSDate *dateOfTimer;
 @property (strong, nonatomic) NSArray *sortedStudents;
-@property (assign, nonatomic) NSInteger countWorkingDays;
+@property (assign, nonatomic) NSInteger countOfWorkingDays;
+@property (assign, nonatomic) double timeInterval;
 
 @end
 
@@ -41,7 +42,7 @@
                                         NSCalendarUnitYear |
                                         NSCalendarUnitMonth |
                                         NSCalendarUnitDay
-                                                        fromDate:[NSDate date]];
+                                                                       fromDate: [NSDate date]];
         
         components.year = (NSInteger)[components year] - (arc4random() % 34 + 16);
         components.month = (arc4random() % 12 + 1);
@@ -52,9 +53,10 @@
         [students addObject:student];
     }
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/YYYY"];
+    
     for (Student *student in students)  {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"dd/MM/YYYY"];
         NSLog(@"%@", [dateFormatter stringFromDate:student.dateOfBirth]);
     }
     
@@ -77,9 +79,6 @@
     for (Student *student in sortedStudents) {
         student.firstName = [firstNamesArray objectAtIndex:arc4random() % [firstNamesArray count]];
         student.secondName = [secondNamesArray objectAtIndex:arc4random() % [secondNamesArray count]];
-    }
-    
-    for (Student *student in sortedStudents) {
         NSLog(@"%@", student);
     }
     
@@ -92,20 +91,25 @@
     
     NSLog(@"~~~~~~~~~~ Master level ~~~~~~~~~~");
     
+    self.timeInterval = -86400;
     self.sortedStudents = sortedStudents;
-    self.dateOfTimer = [NSDate dateWithTimeIntervalSinceReferenceDate:-86400];
-    [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerMethod1:) userInfo:nil repeats:YES];
+    self.dateOfTimer = [NSDate dateWithTimeIntervalSinceReferenceDate: self.timeInterval];
+    [NSTimer scheduledTimerWithTimeInterval:0.01
+                                     target:self
+                                   selector:@selector(timerMethodForMasterLevel:)
+                                   userInfo:nil
+                                    repeats:YES];
     
     Student *youngestStudent = [sortedStudents firstObject];
     Student *oldestStudent = [sortedStudents lastObject];
     
     NSDateComponents *ageDifference = [[NSCalendar currentCalendar] components:
-                                    NSCalendarUnitDay |
-                                    NSCalendarUnitMonth |
-                                    NSCalendarUnitYear
-                                               fromDate:oldestStudent.dateOfBirth
-                                                 toDate:youngestStudent.dateOfBirth
-                                                options:0];
+                                       NSCalendarUnitDay |
+                                       NSCalendarUnitMonth |
+                                       NSCalendarUnitYear
+                                                                      fromDate:oldestStudent.dateOfBirth
+                                                                        toDate:youngestStudent.dateOfBirth
+                                                                       options:0];
     
     NSLog(@"Difference age: year - %ld, month - %ld, days - %ld", (long)ageDifference.year, ageDifference.month, ageDifference.day);
     
@@ -118,30 +122,32 @@
     
     NSLog(@"~~~~~~~~~~ Superman level ~~~~~~~~~~");
     
-    self.countWorkingDays = 0;
-    self.dateOfTimer = [NSDate dateWithTimeIntervalSinceReferenceDate:-86400];
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerMethod2:) userInfo:nil repeats:YES];
+    self.countOfWorkingDays = 0;
+    self.dateOfTimer = [NSDate dateWithTimeIntervalSinceReferenceDate: self.timeInterval];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.01
+                                                      target:self
+                                                    selector:@selector(timerMethodForSupermanLevel:)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    
     [timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:8]];
     
     return YES;
 }
 
-#pragma mark -- timerMethod1 for working Master level --
-- (void) timerMethod1:(NSTimer *) timer {
-    self.dateOfTimer = [NSDate dateWithTimeInterval:86400 sinceDate:self.dateOfTimer];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+#pragma mark -- timer Method Of Master Level --
+- (void) timerMethodForMasterLevel:(NSTimer *) timer {
+    self.dateOfTimer = [NSDate dateWithTimeInterval: self.timeInterval sinceDate:self.dateOfTimer];
     
-    //NSLog(@"%@", [dateFormatter stringFromDate:self.dateOfTimer]);
-    
-    NSDateComponents *currentDateComponents = [[NSCalendar currentCalendar] components: NSCalendarUnitMonth | NSCalendarUnitDay                                                                                                            fromDate:self.dateOfTimer];
+    NSDateComponents *currentDateComponents = [[NSCalendar currentCalendar] components: NSCalendarUnitMonth | NSCalendarUnitDay
+                                                                              fromDate: self.dateOfTimer];
     
     for (Student *student in self.sortedStudents) {
-        
-        NSDateComponents *studentDateComponents = [[NSCalendar currentCalendar] components: NSCalendarUnitMonth | NSCalendarUnitDay                                                                                                     fromDate:student.dateOfBirth];
+        NSDateComponents *studentDateComponents = [[NSCalendar currentCalendar] components: NSCalendarUnitMonth | NSCalendarUnitDay
+                                                                                  fromDate: student.dateOfBirth];
         
         if ([currentDateComponents isEqual:studentDateComponents]) {
-            NSLog(@"Heppy Birthday! %@ %@", student.firstName, student.secondName);
+            NSLog(@"Happy Birthday! %@ %@", student.firstName, student.secondName);
         }
     }
     
@@ -150,16 +156,16 @@
     }
 }
 
-#pragma mark -- timerMethod2 for working Superman level--
-- (void) timerMethod2:(NSTimer *) timer {
-    self.dateOfTimer = [NSDate dateWithTimeInterval:86400 sinceDate:self.dateOfTimer];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+#pragma mark -- timer Method Of Superman Level --
+- (void) timerMethodForSupermanLevel:(NSTimer *) timer {
+    self.dateOfTimer = [NSDate dateWithTimeInterval: self.timeInterval sinceDate:self.dateOfTimer];
     
     NSDateComponents *currentDateComponents = [[NSCalendar currentCalendar] components:
                                                NSCalendarUnitMonth |
                                                NSCalendarUnitDay |
                                                NSCalendarUnitWeekday                                                                         fromDate:self.dateOfTimer];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
     if (currentDateComponents.day == 1) {
         [dateFormatter setDateFormat:@"EEEE"];
@@ -172,11 +178,11 @@
     }
     
     if (currentDateComponents.weekday != 1 && currentDateComponents.weekday != 6) {
-        self.countWorkingDays++;
+        self.countOfWorkingDays++;
     }
     
     if (currentDateComponents.day == 31 & currentDateComponents.month == 12) {
-        NSLog(@"%ld working days in current year", self.countWorkingDays);
+        NSLog(@"%ld working days in current year", self.countOfWorkingDays);
         [timer invalidate];
     }
 }
