@@ -11,7 +11,7 @@
 #import "Patient.h"
 
 typedef void (^TestBlockWithoutParams)(void);
-typedef void (^TestBlockWithInOneStringParams)(NSString *);
+typedef void (^TestBlockWithOneStringParams)(NSString *);
 typedef void (^PatientBlock)(Patient *);
 
 @interface AppDelegate ()
@@ -39,7 +39,7 @@ typedef void (^PatientBlock)(Patient *);
         NSLog(@"test block");
     };
     
-    TestBlockWithInOneStringParams testBlockWithStringParams = ^(NSString* string){
+    TestBlockWithOneStringParams testBlockWithStringParams = ^(NSString* string){
         NSLog(@"testBlockWithStringParams %@", string);
     };
     
@@ -131,24 +131,24 @@ typedef void (^PatientBlock)(Patient *);
                          nil];
     
     for (Patient *patient in patients) {
-        if (patient.feeling) {
+        if (patient.isFeelingGood) {
             [patient feelingIll:^(Patient * patient) {
                 switch (patient.organ) {
-                    case Head:
+                    case OrganHead:
                         NSLog(@"My head hurts");
                         [patient takePill];
                         break;
-                    case Throat:
+                    case OrganThroat:
                         NSLog(@"My throat hurts");
                         [patient takeThroatDrops];
                         break;
-                    case Heart:
+                    case OrganHeart:
                         NSLog(@"My heart hurts");
                         [patient makeShot];
                         break;
-                    case Stomach:
+                    case OrganStomach:
                         NSLog(@"My stomach hurts");
-                        [patient eatHealthFood];
+                        [patient eatHealthyFood];
                         break;
                     default: break;
                 }
@@ -168,21 +168,21 @@ typedef void (^PatientBlock)(Patient *);
     
     PatientBlock patientBlockForInit = ^(Patient *patient) {
         switch (patient.organ) {
-            case Head:
+            case OrganHead:
                 NSLog(@"My head hurts");
                 [patient takePill];
                 break;
-            case Throat:
+            case OrganThroat:
                 NSLog(@"My throat hurts");
                 [patient takeThroatDrops];
                 break;
-            case Heart:
+            case OrganHeart:
                 NSLog(@"My heart hurts");
                 [patient makeShot];
                 break;
-            case Stomach:
+            case OrganStomach:
                 NSLog(@"My stomach hurts");
-                [patient eatHealthFood];
+                [patient eatHealthyFood];
                 break;
             default: break;
         }

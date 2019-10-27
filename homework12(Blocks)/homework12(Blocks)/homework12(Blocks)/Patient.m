@@ -15,7 +15,7 @@
     if (self) {
         self.name = name;
         self.sName = sName;
-        self.feeling = arc4random() % 2;
+        self.isFeelingGood = arc4random() % 2;
         self.organ = arc4random() % 4;
     }
     return self;
@@ -26,7 +26,7 @@
     if (self) {
         self.name = name;
         self.sName = sName;
-        self.feeling = arc4random() % 2;
+        self.isFeelingGood = arc4random() % 2;
         self.organ = arc4random() % 4;
         [self performSelector:@selector(feelingIll:) withObject:block afterDelay:arc4random() % 10 + 5];
     }
@@ -41,8 +41,8 @@
     NSLog(@"Patient %@ %@ now I do big shot for you!", self.name, self.sName);
 }
 
-- (void) eatHealthFood {
-    NSLog(@"Patient %@ %@ eat more healthfood!", self.name, self.sName);
+- (void) eatHealthyFood {
+    NSLog(@"Patient %@ %@ eat more healthy food!", self.name, self.sName);
 }
 
 - (void) takeThroatDrops {

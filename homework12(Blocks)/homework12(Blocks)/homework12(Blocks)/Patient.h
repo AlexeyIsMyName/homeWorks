@@ -11,10 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum {
-    Head,
-    Throat,
-    Heart,
-    Stomach,
+    OrganHead,
+    OrganThroat,
+    OrganHeart,
+    OrganStomach,
 } Organ;
 
 @interface Patient : NSObject
@@ -22,14 +22,14 @@ typedef enum {
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *sName;
 @property (assign, nonatomic) Organ organ;
-@property (assign, nonatomic) BOOL feeling;
+@property (assign, nonatomic) BOOL isFeelingGood;
 
 - (instancetype)initWithName:(NSString *) name sName:(NSString *) sName;
 - (instancetype)initWithBlock:(void(^)(Patient *patient)) block name:(NSString *) name sName:(NSString *) sName;
 
 - (void) takePill;
 - (void) makeShot;
-- (void) eatHealthFood;
+- (void) eatHealthyFood;
 - (void) takeThroatDrops;
 
 - (void) feelingIll:(void (^)(Patient *)) block;
