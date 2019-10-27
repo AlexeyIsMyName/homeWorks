@@ -10,9 +10,5 @@
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView *mainField;
-@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *cells;
-@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *figures;
-
 @end
 

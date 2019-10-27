@@ -10,12 +10,17 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *mainField;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *cells;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *figures;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [UIView setAnimationsEnabled:YES];
     // Do any additional setup after loading the view.
 }
 
@@ -48,14 +53,14 @@
     return UIInterfaceOrientationMaskAll;
 }
 
-- (CGFloat) randomFromZeroToOne {
-    return (float)(arc4random() % 256) / 255;
+- (CGFloat) randomNumberFromZeroToOne {
+    return random() % 256 / 255;
 }
 
 - (UIColor *) randomColor {
-    CGFloat r = [self randomFromZeroToOne];
-    CGFloat g = [self randomFromZeroToOne];
-    CGFloat b = [self randomFromZeroToOne];
+    CGFloat r = [self randomNumberFromZeroToOne];
+    CGFloat g = [self randomNumberFromZeroToOne];
+    CGFloat b = [self randomNumberFromZeroToOne];
     return [UIColor colorWithRed:r green:g blue:b alpha:1];
 }
 
@@ -72,8 +77,6 @@
     for (NSInteger i = 0; i < randomCountChange; i++) {
         UIView *firstFigure = [self.figures objectAtIndex:arc4random() % [self.figures count]];
         UIView *secondFigure = [self.figures objectAtIndex:arc4random() % [self.figures count]];
-        
-        [UIView setAnimationsEnabled:YES];
         
         [UIView animateWithDuration:1 delay:1 options:0 animations:^{
             CGRect tempRect = firstFigure.frame;
