@@ -31,7 +31,13 @@
     
     for (int i = 0; i < 1000; i++) {
         Student *student = [[Student alloc] init];
-        student.subjectType = arc4random() % 128;
+        student.subjectType = arc4random() % (StudentSubjectTypeAnatomy |
+                                              StudentSubjectTypePsychology |
+                                              StudentSubjectTypeArt |
+                                              StudentSubjectTypeBiology |
+                                              StudentSubjectTypeEngineering |
+                                              StudentSubjectTypeDevelopment |
+                                              StudentSubjectTypeMath);
         [students addObject:student];
     }
     
@@ -47,10 +53,10 @@
     NSUInteger countWhoStudyingDevelopment = 0;
     
     for (Student *student in students) {
-        if (student.subjectType == 14) {
+        if (student.subjectType == (StudentSubjectTypeMath | StudentSubjectTypeEngineering)) {
             [studentsWhoWantToKnowTech addObject:student];
         }
-        if (student.subjectType == 113) {
+        if (student.subjectType == (StudentSubjectTypeBiology | StudentSubjectTypeArt | StudentSubjectTypePsychology | StudentSubjectTypeAnatomy)) {
             [studentsWhoWantToKnowOther addObject:student];
         }
         if (student.subjectType & StudentSubjectTypeDevelopment) {
@@ -91,7 +97,7 @@
     
     NSLog(@"~~~~~~~~~~ Superman level ~~~~~~~~~~");
     
-    NSInteger randomNumber = arc4random() % ((void)(0) , NSIntegerMax);
+    NSInteger randomNumber = arc4random();
     NSLog(@"%ld", (long)randomNumber);
     NSMutableString *biteWiseNumber = [[NSMutableString alloc] init];
     
